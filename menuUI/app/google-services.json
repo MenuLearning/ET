@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "292638884900",
+    "firebase_url": "https://menuui-a6191.firebaseio.com",
+    "project_id": "menuui-a6191",
+    "storage_bucket": "menuui-a6191.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:292638884900:android:cbc73d9c7a9e13f0f844b1",
+        "android_client_info": {
+          "package_name": "com.example.s1.menuui"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "292638884900-h728n5o5ua4evueo490ie2rim07cmnsu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.s1.menuui",
+            "certificate_hash": "40fb9e6fdb9e75705d8ba5400367daa5831ac936"
+          }
+        },
+        {
+          "client_id": "292638884900-temffcp4ipe4o040dqkuq5o64nm7g7fc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9Mm7WuWGwu6yVYOU1P_Cn0olI1XJGwOo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "292638884900-temffcp4ipe4o040dqkuq5o64nm7g7fc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
