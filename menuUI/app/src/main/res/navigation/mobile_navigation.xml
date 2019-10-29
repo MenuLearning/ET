@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.s1.menuui.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_qna"
+        android:name="com.example.s1.menuui.QNAFragment"
+        android:label="QNA"
+        tools:layout="@layout/fragment_qna" />
+
+    <fragment
+        android:id="@+id/nav_search"
+        android:name="com.example.s1.menuui.SearchFragment"
+        android:label="Search"
+        tools:layout="@layout/fragment_search" />
+
+    <fragment
+        android:id="@+id/nav_prev_search"
+        android:name="com.example.s1.menuui.PreviousSearchFragment"
+        android:label="Previous Search"
+        tools:layout="@layout/fragment_prev_search" />
+
+    <fragment
+        android:id="@+id/nav_myinfo"
+        android:name="com.example.s1.menuui.UserFragment"
+        android:label="My Information"
+        tools:layout="@layout/fragment_user" />
+
+    <fragment
+        android:id="@+id/nav_freeboard"
+        android:name="com.example.s1.menuui.DetailViewFragment"
+        android:label="Free Board"
+        tools:layout="@layout/fragment_detail" />
+
+    <fragment
+        android:id="@+id/nav_wish_menu"
+        android:name="com.example.s1.menuui.WishMenuFragment"
+        android:label="Wish Menu"
+        tools:layout="@layout/fragment_wish_menu"/>
+</navigation>

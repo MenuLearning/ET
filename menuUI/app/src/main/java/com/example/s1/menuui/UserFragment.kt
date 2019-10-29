@@ -51,14 +51,14 @@ class UserFragment : Fragment() {
         }else{
             //OtherUserPage
             fragmentView?.account_btn_follow_signout?.text = getString(R.string.follow)
-            var mainactivity = (activity as MainActivity)
-            mainactivity?.toolbar_username?.text = arguments?.getString("userId")
-            mainactivity?.toolbar_btn_back?.setOnClickListener {
-                mainactivity.bottom_navigation.selectedItemId = R.id.action_home
-            }
+//            var mainactivity = (activity as MainActivity)
+//            mainactivity?.toolbar_username?.text = arguments?.getString("userId")
+//            mainactivity?.toolbar_btn_back?.setOnClickListener {
+//                mainactivity.bottom_navigation.selectedItemId = R.id.action_home
+//            }
 
-            mainactivity?.toolbar_username?.visibility = View.VISIBLE
-            mainactivity?.toolbar_btn_back?.visibility = View.VISIBLE
+//            mainactivity?.toolbar_username?.visibility = View.VISIBLE
+//            mainactivity?.toolbar_btn_back?.visibility = View.VISIBLE
             fragmentView?.account_btn_follow_signout?.setOnClickListener {
                 requestFollow()
             }
