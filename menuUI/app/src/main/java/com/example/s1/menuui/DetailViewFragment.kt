@@ -2,42 +2,61 @@ package com.example.s1.menuui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.fragment_detail.view.*
+import kotlinx.android.synthetic.main.fragment_user.view.*
 import kotlinx.android.synthetic.main.item_detail.view.*
 
 class DetailViewFragment : Fragment() {
 
     var firestore : FirebaseFirestore? = null
     var uid : String? = null
+    val TAG = "ADD"
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view = LayoutInflater.from(activity).inflate(R.layout.fragment_detail,container,false)
+
         firestore = FirebaseFirestore.getInstance()
         uid = FirebaseAuth.getInstance().currentUser?.uid
 
         view.detailviewfragment_recyclerview.adapter = DetailViewRecyclerViewAdapter()
         view.detailviewfragment_recyclerview.layoutManager = LinearLayoutManager(activity)
 
+        view.freeboard_btn.setOnClickListener{
+            val freeBoardFragment = FreeBoardFragment()
+            fragmentManager?.beginTransaction()?.replace(R.id.main_content, freeBoardFragment)?.commit()
+        }
+
+        view.qna_btn.setOnClickListener{
+            val qnaFragment = QNAFragment()
+            fragmentManager?.beginTransaction()?.replace(R.id.main_content, qnaFragment)?.commit()
+        }
+
         return view
     }
     inner class DetailViewRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         var contentDTOs : ArrayList<ContentDTO> = arrayListOf()
-        var contentUidList : ArrayList<String> = arrayListOf()
+        var contentUidList : ArrayList<String> = arrayListOf() // post id
+        var profileImgUrl : HashMap<String, String> = hashMapOf()
 
         init {
-
-
-            firestore?.collection("images")?.orderBy("timestamp")?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
+            firestore?.collection("images")?.orderBy("timestamp", Query.Direction.DESCENDING)?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 contentDTOs.clear()
                 contentUidList.clear()
+                profileImgUrl.clear()
+
                 //Sometimes, This code return null of querySnapshot when it signout
                 if(querySnapshot == null) return@addSnapshotListener
 
@@ -45,8 +64,24 @@ class DetailViewFragment : Fragment() {
                     var item = snapshot.toObject(ContentDTO::class.java)
                     contentDTOs.add(item!!)
                     contentUidList.add(snapshot.id)
+
+                    // add profile Image URl if it isn't exist
+                    if (!profileImgUrl.containsKey(item.uid)) {
+                        addProfileImgURL(item.uid!!)
+                    }
                 }
                 notifyDataSetChanged()
+            }
+        }
+
+        fun addProfileImgURL(id: String) {
+            firestore?.collection("profileImages")?.document(id)?.addSnapshotListener { documentSnapshot, firebaseFirestoreException ->
+                if(documentSnapshot == null) return@addSnapshotListener
+                if(documentSnapshot.data != null){
+                    var url = documentSnapshot?.data!!["image"].toString()
+//                    Log.d(TAG, "id : " + id + ", url : " + url)
+                    profileImgUrl.put(id, url)
+                }
             }
         }
 
@@ -66,6 +101,9 @@ class DetailViewFragment : Fragment() {
 
             //UserId
             viewholder.detailviewitem_profile_textview.text = contentDTOs!![p1].userId
+
+            //User Profile Image
+            Glide.with(p0.itemView.context).load(profileImgUrl.get(contentDTOs!![p1].uid)).apply(RequestOptions().circleCrop()).into(viewholder.detailviewitem_profile_image)
 
             //Image
             Glide.with(p0.itemView.context).load(contentDTOs!![p1].imageUrl).into(viewholder.detailviewitem_imageview_content)
@@ -100,13 +138,18 @@ class DetailViewFragment : Fragment() {
                 fragment.arguments = bundle
                 activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.main_content,fragment)?.commit()
             }
+            // move to commentActivity
             viewholder.detailviewitem_comment_imageview.setOnClickListener { v ->
                 var intent = Intent(v.context,CommentActivity::class.java)
                 intent.putExtra("contentUid",contentUidList[p1])
                 intent.putExtra("destinationUid",contentDTOs[p1].uid)
+                intent.putExtra("content", contentDTOs[p1].explain)
+                intent.putExtra("contentUserId", contentDTOs[p1].userId)
+                intent.putExtra("contentProfileUrl", profileImgUrl.get(contentDTOs[p1].uid))
                 startActivity(intent)
             }
         }
+
         fun favoriteEvent(position : Int){
             var tsDoc = firestore?.collection("images")?.document(contentUidList[position])
             firestore?.runTransaction { transaction ->
@@ -127,12 +170,8 @@ class DetailViewFragment : Fragment() {
                 }
                 transaction.set(tsDoc,contentDTO)
             }
-
-
-
-
-
         }
+
         fun favoriteAlarm(destinationUid : String){
             var alarmDTO = AlarmDTO()
             alarmDTO.destinationUid = destinationUid
@@ -142,6 +181,5 @@ class DetailViewFragment : Fragment() {
             alarmDTO.timestamp = System.currentTimeMillis()
             FirebaseFirestore.getInstance().collection("alarms").document().set(alarmDTO)
         }
-
     }
 }

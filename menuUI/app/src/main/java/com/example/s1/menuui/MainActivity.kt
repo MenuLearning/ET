@@ -78,7 +78,6 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 return true
             }
             R.id.action_add_photo ->{
-
                 if(ContextCompat.checkSelfPermission(this,Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED){
                     startActivity(Intent(this,AddPhotoActivity::class.java))
                 }

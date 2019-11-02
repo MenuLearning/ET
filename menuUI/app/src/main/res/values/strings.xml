@@ -37,7 +37,7 @@
     <string name="alarm_comment">left a message</string>
     <string name="alarm_follow">has started to follow your account</string>
 
-    <!-- Comment -->
+    <!-- CommentDTO -->
     <string name="send">Send</string>
 
     <!-- Add Photo -->

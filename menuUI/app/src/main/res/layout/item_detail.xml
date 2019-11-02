@@ -37,13 +37,15 @@
             android:id="@+id/detailviewitem_comment_imageview"
             android:src="@drawable/ic_chat_black"
             android:layout_width="35dp"
-            android:layout_height="35dp"/>
+            android:layout_height="35dp"
+            android:layout_marginLeft="5dp"/>
     </LinearLayout>
     <TextView
         android:id="@+id/detailviewitem_favoritecounter_textview"
         android:text="like 0"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"/>
     <TextView
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"

@@ -1,0 +1,72 @@
+{
+  "variant": {
+    "module": {
+      "rootBuildGradleFolder": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI",
+      "sdkFolder": "C:\\Users\\kkuy6\\AppData\\Local\\Android\\Sdk",
+      "isNativeCompilerSettingsCacheEnabled": false,
+      "isBuildOnlyTargetAbiEnabled": true,
+      "splitsAbiFilterSet": [],
+      "intermediatesFolder": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\build\\intermediates",
+      "gradleModulePathName": ":app",
+      "moduleRootFolder": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app",
+      "makeFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\src\\main\\cpp\\CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "compilerSettingsCacheFolder": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\.cxx",
+      "cxxFolder": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx",
+      "ndkFolder": "C:\\Users\\kkuy6\\AppData\\Local\\Android\\Sdk\\ndk-bundle",
+      "ndkVersion": "20.0.5594570",
+      "ndkSupportedAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "cmakeToolchainFile": "."
+    },
+    "buildSystemArgumentList": [],
+    "cFlagList": [],
+    "cppFlagsList": [
+      ""
+    ],
+    "variantName": "release",
+    "soFolder": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\build\\intermediates\\cmake\\release\\lib",
+    "objFolder": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\build\\intermediates\\cmake\\release\\obj",
+    "jsonFolder": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\release",
+    "gradleBuildOutputFolder": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cxx\\release",
+    "isDebuggableEnabled": false,
+    "validAbiList": [
+      "ARMEABI_V7A",
+      "ARM64_V8A",
+      "X86",
+      "X86_64"
+    ],
+    "buildTargetSet": []
+  },
+  "abi": "X86",
+  "abiPlatformVersion": 22,
+  "cxxBuildFolder": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\release\\x86",
+  "jsonFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\release\\x86\\android_gradle_build.json",
+  "gradleBuildOutputFolder": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cxx\\release\\x86",
+  "objFolder": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\build\\intermediates\\cmake\\release\\obj\\x86",
+  "buildCommandFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\release\\x86\\build_command.txt",
+  "buildOutputFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\release\\x86\\build_output.txt",
+  "modelOutputFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\release\\x86\\build_model.json",
+  "cmake": {
+    "cmakeListsWrapperFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cxx\\release\\x86\\CMakeLists.txt",
+    "toolchainWrapperFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cxx\\release\\x86\\android_gradle_build.toolchain.cmake",
+    "buildGenerationStateFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cxx\\release\\x86\\build_generation_state.json",
+    "cacheKeyFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cxx\\release\\x86\\compiler_cache_key.json",
+    "compilerCacheUseFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cxx\\release\\x86\\compiler_cache_use.json",
+    "compilerCacheWriteFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cxx\\release\\x86\\compiler_cache_write.json",
+    "toolchainSettingsFromCacheFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cxx\\release\\x86\\compiler_settings_cache.cmake",
+    "cmakeWrappingBaseFolder": "."
+  },
+  "jsonGenerationLoggingRecordFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\release\\x86\\json_generation_record.json",
+  "compileCommandsJsonFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\release\\x86\\compile_commands.json"
+}

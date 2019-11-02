@@ -14,8 +14,7 @@
     <fragment
         android:id="@+id/nav_qna"
         android:name="com.example.s1.menuui.QNAFragment"
-        android:label="QNA"
-        tools:layout="@layout/fragment_qna" />
+        android:label="QNA" />
 
     <fragment
         android:id="@+id/nav_search"
@@ -32,14 +31,12 @@
     <fragment
         android:id="@+id/nav_myinfo"
         android:name="com.example.s1.menuui.UserFragment"
-        android:label="My Information"
-        tools:layout="@layout/fragment_user" />
+        android:label="My Information" />
 
     <fragment
         android:id="@+id/nav_freeboard"
-        android:name="com.example.s1.menuui.DetailViewFragment"
-        android:label="Free Board"
-        tools:layout="@layout/fragment_detail" />
+        android:name="com.example.s1.menuui.FreeBoardFragment"
+        android:label="Free Board" />
 
     <fragment
         android:id="@+id/nav_wish_menu"

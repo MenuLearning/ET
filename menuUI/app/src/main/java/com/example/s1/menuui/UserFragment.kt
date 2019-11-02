@@ -1,12 +1,15 @@
 package com.example.s1.menuui
 
+import android.content.Context
 import android.content.Intent
+import android.gesture.Gesture
 import android.graphics.PorterDuff
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.os.Parcelable
+import android.util.Log
+import android.view.*
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -15,17 +18,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_user.*
 import kotlinx.android.synthetic.main.fragment_user.view.*
 
 
 class UserFragment : Fragment() {
+    val TAG = "UserF"
     var fragmentView : View? = null
     var firestore : FirebaseFirestore? = null
     var uid : String? = null
     var auth : FirebaseAuth? = null
     var currentUserUid : String? = null
+    var contentDTOs : ArrayList<ContentDTO> = arrayListOf()
+    var contentSnapshotId : ArrayList<String> = arrayListOf()
+
     companion object {
         var PICK_PROFILE_FROM_ALBUM = 10
     }
@@ -35,21 +45,57 @@ class UserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         fragmentView = LayoutInflater.from(activity).inflate(R.layout.fragment_user,container,false)
+//        var uid = FirebaseAuth.getInstance().currentUser?.uid
         uid = arguments?.getString("destinationUid")
         firestore = FirebaseFirestore.getInstance()
         auth = FirebaseAuth.getInstance()
         currentUserUid = auth?.currentUser?.uid
 
+        Log.d(TAG, "uid: " + uid)
+        Log.d(TAG, "currentUserId : " + currentUserUid)
+        /*
+        val database = FirebaseDatabase.getInstance().reference
+        database.child("data").child("KorName").addChildEventListener({DataSnapshot
+
+        })
+
+         */
         if(uid == currentUserUid){
             //MyPage
+            Log.d(TAG, "my page in")
+            Log.d(TAG, "uid : " + uid)
             fragmentView?.account_btn_follow_signout?.text = getString(R.string.signout)
             fragmentView?.account_btn_follow_signout?.setOnClickListener {
                 activity?.finish()
                 startActivity(Intent(activity,LoginActivity::class.java))
                 auth?.signOut()
             }
+            fragmentView?.account_reyclerview?.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
+                private val gestureDetector : GestureDetector = GestureDetector(context, object: GestureDetector.SimpleOnGestureListener() {
+                    override fun onSingleTapUp(e: MotionEvent?): Boolean {
+                        return true
+                    }
+                })
+                override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
+                    val child = account_reyclerview.findChildViewUnder(e.x, e.y)
+                    if (child != null && gestureDetector.onTouchEvent(e)) {
+                        val position = account_reyclerview.getChildLayoutPosition(child!!)
+                        Log.d("TouchEvent", position.toString())
+                        val intent = Intent(context, BoardActivity::class.java)
+                        intent.putExtra("content", contentDTOs[position])
+                        intent.putExtra("snapshotId", contentSnapshotId[position])
+                        startActivity(intent)
+                    }
+                    return false
+                }
+
+                override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
+
+                override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
+            })
         }else{
             //OtherUserPage
+            Log.d(TAG, "other user page in")
             fragmentView?.account_btn_follow_signout?.text = getString(R.string.follow)
 //            var mainactivity = (activity as MainActivity)
 //            mainactivity?.toolbar_username?.text = arguments?.getString("userId")
@@ -71,12 +117,13 @@ class UserFragment : Fragment() {
             photoPickerIntent.type = "image/*"
             activity?.startActivityForResult(photoPickerIntent,PICK_PROFILE_FROM_ALBUM)
         }
+
         getProfileImage()
         getFollowerAndFollowing()
         return fragmentView
     }
     fun getFollowerAndFollowing(){
-        firestore?.collection("users")?.document(uid!!)?.addSnapshotListener { documentSnapshot, firebaseFirestoreException ->
+        firestore?.collection("users")?.document(currentUserUid!!)?.addSnapshotListener { documentSnapshot, firebaseFirestoreException ->
             if(documentSnapshot == null) return@addSnapshotListener
             var followDTO = documentSnapshot.toObject(FollowDTO::class.java)
             if(followDTO?.followingCount != null){
@@ -100,7 +147,7 @@ class UserFragment : Fragment() {
     }
     fun requestFollow(){
         //Save data to my account
-        var tsDocFollowing = firestore?.collection("users")?.document(currentUserUid!!)
+        var tsDocFollowing = firestore?.collection("users")?.document(uid!!)
         firestore?.runTransaction { transaction ->
             var followDTO = transaction.get(tsDocFollowing!!).toObject(FollowDTO::class.java)
             if(followDTO == null){
@@ -163,7 +210,9 @@ class UserFragment : Fragment() {
         FirebaseFirestore.getInstance().collection("alarms").document().set(alarmDTO)
     }
     fun getProfileImage(){
-        firestore?.collection("profileImages")?.document(uid!!)?.addSnapshotListener { documentSnapshot, firebaseFirestoreException ->
+        Log.d(TAG, "getProfileImage UID : " + uid)
+        // document 에 넣는 parameter uid로 설정한 이유..!!? -> 일단 currentUserUid로 바꿔놓음
+        firestore?.collection("profileImages")?.document(currentUserUid!!)?.addSnapshotListener { documentSnapshot, firebaseFirestoreException ->
             if(documentSnapshot == null) return@addSnapshotListener
             if(documentSnapshot.data != null){
                 var url = documentSnapshot?.data!!["image"]
@@ -172,15 +221,19 @@ class UserFragment : Fragment() {
         }
     }
     inner class UserFragmentRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
-        var contentDTOs : ArrayList<ContentDTO> = arrayListOf()
+//        var contentDTOs : ArrayList<ContentDTO> = arrayListOf()
         init {
             firestore?.collection("images")?.whereEqualTo("uid",uid)?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 //Sometimes, This code return null of querySnapshot when it signout
+                contentDTOs.clear()
+                contentSnapshotId.clear()
+
                 if(querySnapshot == null) return@addSnapshotListener
 
                 //Get data
                 for(snapshot in querySnapshot.documents){
                     contentDTOs.add(snapshot.toObject(ContentDTO::class.java)!!)
+                    contentSnapshotId.add(snapshot.id)
                 }
                 fragmentView?.account_tv_post_count?.text = contentDTOs.size.toString()
                 notifyDataSetChanged()
@@ -196,6 +249,18 @@ class UserFragment : Fragment() {
         }
 
         inner class CustomViewHolder(var imageview: ImageView) : RecyclerView.ViewHolder(imageview) {
+/*            fun bind (contentDTO: ContentDTO, context: Context) {
+                imageview.setOnClickListener {
+                    Toast.makeText(context, "click in!" + contentDTO.explain, Toast.LENGTH_SHORT).show()
+//                    val intent = Intent(context, BoardActivity::class.java)
+//                    intent.putExtra("contents", contentDTO)
+                }
+            }
+
+ */
+        }
+
+        inner class Holder(itemView: View, itemClick: (ContentDTO) -> Unit) : RecyclerView.ViewHolder(itemView) {
 
         }
 
@@ -207,6 +272,5 @@ class UserFragment : Fragment() {
             var imageview = (p0 as CustomViewHolder).imageview
             Glide.with(p0.itemView.context).load(contentDTOs[p1].imageUrl).apply(RequestOptions().centerCrop()).into(imageview)
         }
-
     }
 }

@@ -82,6 +82,7 @@ class AddPhotoActivity : AppCompatActivity() {
             contentDTO.timestamp = System.currentTimeMillis()
 
             firestore?.collection("images")?.document()?.set(contentDTO)
+//            firestore?.collection("posts")?.document()?.set(contentDTO)
 
             setResult(Activity.RESULT_OK)
 

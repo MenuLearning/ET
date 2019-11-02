@@ -65,5 +65,6 @@ class GridFragment : Fragment() {
             Glide.with(p0.itemView.context).load(contentDTOs[p1].imageUrl).apply(RequestOptions().centerCrop()).into(imageview)
         }
 
+
     }
 }

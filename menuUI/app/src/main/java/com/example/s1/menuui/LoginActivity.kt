@@ -48,7 +48,6 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
 
-
         // 페이스북 콜백 등록
         callbackManager = CallbackManager.Factory.create();
 

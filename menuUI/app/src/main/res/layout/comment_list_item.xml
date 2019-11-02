@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/comment_profile_image"
+        android:layout_width="49dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        tools:srcCompat="@tools:sample/avatars[15]" />
+
+    <TextView
+        android:id="@+id/comment_id_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/comment_profile_image"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:text="your id" />
+
+    <TextView
+        android:id="@+id/comment_contents_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/comment_id_tv"
+        android:layout_alignLeft= "@id/comment_id_tv"
+        android:layout_marginTop="5dp"
+        android:text="Hello, android application service," />
+</RelativeLayout>
