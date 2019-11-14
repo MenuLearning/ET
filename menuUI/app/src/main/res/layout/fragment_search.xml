@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -14,14 +14,17 @@
         android:text="Please capture the menu"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:gravity="center"
+        android:gravity="center_horizontal"
         android:textColor="#69cadc"/>
 
     <!-- ImageView in whic image will be set -->
+
     <ImageView
         android:id="@+id/image_view"
-        android:layout_width="250dp"
-        android:layout_height="300dp"
+        android:layout_width="242dp"
+        android:layout_height="258dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_restaurant_menu_black_24dp" />
 
@@ -31,17 +34,68 @@
         android:id="@+id/capture_btn"
         android:layout_width="107dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/image_view"
+        android:layout_centerHorizontal="true"
         android:layout_gravity="center"
         android:layout_marginVertical="30dp"
         android:background="#F3FFFFFF"
         app:srcCompat="@drawable/click_icon" />
 
     <Button
-        android:id="@+id/skip_btn"
+        android:id="@+id/btn"
         android:layout_width="105dp"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
+        android:layout_below="@+id/image_view"
         android:background="@color/colorPrimary"
-        android:text="Skip"
+        android:layout_alignEnd="@id/textView"
+        android:text="Translate"
         android:textSize="15sp" />
-</LinearLayout>
+
+    <TextView
+        android:id="@+id/rate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/capture_btn"
+        android:gravity="center_horizontal"
+        android:text="Exchange Rate"
+        android:textColor="#69cadc"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/from"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rate" />
+
+    <TextView
+        android:id="@+id/from_country"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/from"
+        android:layout_alignParentStart="true"
+        android:gravity="center_horizontal"
+        android:text="Korea won"
+        android:textSize="20sp" />
+
+    <Spinner
+        android:id="@+id/to"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/rate"/>
+
+    <TextView
+        android:id="@+id/to_country"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/to"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_horizontal"
+        android:text="US dollar"
+        android:textSize="20sp" />
+
+
+</RelativeLayout>

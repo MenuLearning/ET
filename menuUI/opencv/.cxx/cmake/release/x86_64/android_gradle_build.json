@@ -1,0 +1,38 @@
+
+{
+	"buildFiles" : [ "F:/menu2/opencv/libcxx_helper/CMakeLists.txt" ],
+	"cleanCommands" : 
+	[
+		"C:\\Users\\s1\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build F:\\menu2\\opencv\\.cxx\\cmake\\release\\x86_64 --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"opencv_jni_shared-Release-x86_64" : 
+		{
+			"abi" : "x86_64",
+			"artifactName" : "opencv_jni_shared",
+			"buildCommand" : "C:\\Users\\s1\\AppData\\Local\\Android\\Sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build F:\\menu2\\opencv\\.cxx\\cmake\\release\\x86_64 --target opencv_jni_shared",
+			"buildType" : "release",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=x86_64-none-linux-android21 --gcc-toolchain=C:/Users/s1/AppData/Local/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/s1/AppData/Local/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot    -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security   -O2 -DNDEBUG  -fPIC    -c ",
+					"src" : "F:/menu2/opencv/libcxx_helper/dummy.cpp",
+					"workingDirectory" : "F:/menu2/opencv/.cxx/cmake/release/x86_64"
+				}
+			],
+			"output" : "F:/menu2/opencv/.cxx/cmake/release/x86_64/libopencv_jni_shared.a",
+			"toolchain" : "941496703"
+		}
+	},
+	"toolchains" : 
+	{
+		"941496703" : 
+		{
+			"cCompilerExecutable" : "C:/Users/s1/AppData/Local/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
+			"cppCompilerExecutable" : "C:/Users/s1/AppData/Local/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
+		}
+	}
+}

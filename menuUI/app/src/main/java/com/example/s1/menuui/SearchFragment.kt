@@ -5,6 +5,8 @@ import android.content.ContentValues
 import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -37,9 +39,9 @@ class SearchFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         fragmentView = LayoutInflater.from(activity).inflate(R.layout.fragment_search,container,false)
-        val skipButton = fragmentView?.findViewById<Button>(R.id.skip_btn)
+        val translateButton = fragmentView?.findViewById<Button>(R.id.btn)
         val imgViewButton = fragmentView?.findViewById<ImageButton>(R.id.capture_btn)
-        skipButton?.visibility = View.INVISIBLE
+        translateButton?.visibility = View.INVISIBLE
         imgViewButton?.setOnClickListener {
             if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
                 if (checkSelfPermission(this.context!!,android.Manifest.permission.CAMERA)
@@ -60,6 +62,8 @@ class SearchFragment : Fragment() {
                 //system os is < marshmallow
                 openCamera()
             }
+//            var intent = Intent(context,OpencvActivity::class.java)
+//            startActivity(intent)
         }
         return fragmentView
     }
@@ -87,6 +91,8 @@ class SearchFragment : Fragment() {
                     PackageManager.PERMISSION_GRANTED){
                     //permission from popup was granted
                     openCamera()
+//                    var intent = Intent(context,OpencvActivity::class.java)
+//                    startActivity(intent)
                 }
                 else{
                     //permission from popup was denied
@@ -99,11 +105,16 @@ class SearchFragment : Fragment() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         //called when image was captured from camera intent
-        val skipButton = fragmentView?.findViewById<Button>(R.id.skip_btn)
+        val translateButton = fragmentView?.findViewById<Button>(R.id.btn)
         if (resultCode == Activity.RESULT_OK){
             //set image captured to image view
             image_view.setImageURI(image_uri)
-            skipButton?.visibility = View.VISIBLE
+            translateButton?.visibility = View.VISIBLE
+            translateButton?.setOnClickListener {
+                var intent = Intent(context,Pic2TextActivity::class.java) //아직 미정 Activity 만들어야됨
+                intent.putExtra("image",image_uri)
+                startActivity(intent)
+            }
         }
     }
 }

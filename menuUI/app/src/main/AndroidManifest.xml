@@ -7,6 +7,27 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera2" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.front.autofocus"
+        android:required="false" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true" />
 
     <application
         android:allowBackup="true"
@@ -16,6 +37,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".CommentActivity"/>
+        <activity android:name=".Pic2TextActivity"></activity>
+        <activity
+            android:name=".OpencvActivity"
+            android:configChanges="keyboardHidden|orientation" /> <!-- android:screenOrientation="landscape" -->
+        <activity android:name=".CommentActivity" />
         <activity android:name=".AddPhotoActivity" />
         <activity android:name=".LoginActivity" />
         <activity
@@ -50,6 +76,7 @@
             android:label="Board"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
