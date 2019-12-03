@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Post"
+            android:textSize="20dp"
+            android:textStyle="bold">
+        </TextView>
+    </androidx.appcompat.widget.Toolbar>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <ImageView
+            android:id="@+id/freeboard_new_iv"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginTop="5dp"
+            android:layout_centerHorizontal="true"
+            tools:srcCompat="@tools:sample/avatars[12]" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/freeboard_add_image_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/freeboard_new_iv"
+            android:layout_marginLeft="-28dp"
+            android:layout_marginBottom="-14dp"
+            android:layout_toRightOf="@id/freeboard_new_iv"
+            app:backgroundTint="@color/colorPrimary"
+            app:srcCompat="@drawable/ic_add_32">
+        </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+        <TextView
+            android:id="@+id/freeboard_food_menu_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/freeboard_new_iv"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="40dp"
+            android:text="What?"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/freeboard_menu_edit_tv"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/freeboard_food_menu_tv"
+            android:layout_alignLeft="@id/freeboard_restaurant_edit_tv"
+            android:layout_alignTop="@id/freeboard_food_menu_tv"
+            android:layout_centerHorizontal="true"/>
+
+        <TextView
+            android:id="@+id/freeboard_restaurant_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/freeboard_food_menu_tv"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="20dp"
+            android:text="Where?"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/freeboard_restaurant_edit_tv"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/freeboard_restaurant_tv"
+            android:layout_toRightOf="@id/freeboard_restaurant_tv"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/freeboard_location_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/freeboard_restaurant_tv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="@color/colorPrimary"
+            android:textColor="@color/colorWhite"
+            android:text="Find Location"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/freeboard_review"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/freeboard_location_btn"
+            android:layout_alignLeft="@id/freeboard_food_menu_tv"
+            android:text="Review"
+            android:textSize="20dp"
+            android:textStyle="bold"/>
+
+        <EditText
+            android:id="@+id/freeboard_review_edit_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@id/freeboard_review"
+            android:layout_alignLeft="@id/freeboard_food_menu_tv"/>
+
+        <RatingBar
+            android:id="@+id/freeboard_rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/freeboard_review_edit_tv"
+            android:layout_marginTop="3dp"
+            android:theme="@style/RatingBar">
+        </RatingBar>
+
+        <Button
+            android:id="@+id/freeboard_add_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/freeboard_rating_bar"
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true"
+            android:backgroundTint="@color/colorPrimary"
+            android:text="ADD"
+            android:textStyle="bold"
+            android:textColor="@color/colorWhite"
+            />
+    </RelativeLayout>
+</LinearLayout>

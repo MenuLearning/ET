@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v26\\values-v26.xml",
+            "outputFile": "C:\\Users\\CS402A\\ET-master\\menuUI\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v26\\values-v26.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\kkuy6\\.gradle\\caches\\transforms-2\\files-2.1\\803451d05a85dcb8f2911bdf9b8deaa9\\firebase-ui-auth-6.0.2\\res\\values-v26\\values-v26.xml",
+                    "source": "C:\\Users\\CS402A\\.gradle\\caches\\transforms-2\\files-2.1\\803451d05a85dcb8f2911bdf9b8deaa9\\firebase-ui-auth-6.0.2\\res\\values-v26\\values-v26.xml",
                     "from": {
                         "startLines": "2,6,10,14",
                         "startColumns": "4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\kkuy6\\.gradle\\caches\\transforms-2\\files-2.1\\5f73b3dbac68c92d84ba46e9c6205e46\\appcompat-1.1.0\\res\\values-v26\\values-v26.xml",
+                    "source": "C:\\Users\\CS402A\\.gradle\\caches\\transforms-2\\files-2.1\\5f73b3dbac68c92d84ba46e9c6205e46\\appcompat-1.1.0\\res\\values-v26\\values-v26.xml",
                     "from": {
                         "startLines": "2,3,4,8,12,16",
                         "startColumns": "4,4,4,4,4,4",

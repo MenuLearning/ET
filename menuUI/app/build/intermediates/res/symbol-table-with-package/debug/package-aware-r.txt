@@ -137,6 +137,7 @@ attr buttonStyle
 attr buttonStyleSmall
 attr buttonTint
 attr buttonTintMode
+attr camera_id
 attr cardBackgroundColor
 attr cardCornerRadius
 attr cardElevation
@@ -508,6 +509,7 @@ attr showDividers
 attr showMotionSpec
 attr showText
 attr showTitle
+attr show_fps
 attr singleChoiceItemLayout
 attr singleLine
 attr singleSelection
@@ -694,10 +696,14 @@ color cardview_shadow_end_color
 color cardview_shadow_start_color
 color colorAccent
 color colorDivision
+color colorHighlight
+color colorMint
 color colorNavIcon
 color colorPrimary
 color colorPrimaryDark
+color colorTransparent
 color colorWhite
+color colorYellow
 color com_facebook_blue
 color com_facebook_button_background_color
 color com_facebook_button_background_color_disabled
@@ -1395,6 +1401,7 @@ id action_settings
 id action_text
 id actions
 id activity_chooser_view_content
+id activity_surface_view
 id add
 id add_wish_button
 id addphoto_btn_upload
@@ -1407,12 +1414,15 @@ id alertTitle
 id all
 id always
 id anonymous_button
+id any
 id async
 id auto
 id automatic
+id back
 id barrier
 id beginning
 id blocking
+id board_delete_btn
 id bottom
 id bottom_navigation
 id box_count
@@ -1421,6 +1431,7 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id btn
 id btn_holder
 id button
 id button2
@@ -1531,7 +1542,21 @@ id fixed
 id forever
 id fragment_phone
 id fragment_register_email
+id freeboard_add_btn
+id freeboard_add_image_btn
 id freeboard_btn
+id freeboard_food_menu_tv
+id freeboard_location_btn
+id freeboard_menu_edit_tv
+id freeboard_new_iv
+id freeboard_rating_bar
+id freeboard_restaurant_edit_tv
+id freeboard_restaurant_tv
+id freeboard_review
+id freeboard_review_edit_tv
+id from
+id from_country
+id front
 id ghost_view
 id glide_custom_view_target_tag
 id gone
@@ -1622,6 +1647,7 @@ id phone_layout
 id phone_number
 id pin
 id plus_fab
+id post_delete
 id post_list
 id post_location
 id post_menu
@@ -1630,6 +1656,7 @@ id progress_circular
 id progress_horizontal
 id qna_btn
 id radio
+id rate
 id resend_barrier
 id resend_code
 id right
@@ -1644,6 +1671,7 @@ id scroll
 id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
+id scrollViewLayout
 id scrollable
 id search_badge
 id search_bar
@@ -1666,7 +1694,6 @@ id showTitle
 id sign_in_email_sent_header_text
 id sign_in_email_sent_text
 id skip
-id skip_btn
 id small
 id smallLabel
 id snackbar_action
@@ -1715,6 +1742,8 @@ id time
 id title
 id titleDividerNoCustom
 id title_template
+id to
+id to_country
 id toolbar
 id toolbar_division
 id top
@@ -1803,9 +1832,12 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_add_photo
+layout activity_add_post
 layout activity_comment
 layout activity_login
 layout activity_main
+layout activity_opencv
+layout activity_pic2text
 layout activity_start
 layout app_bar_main
 layout bar_layout
@@ -1899,6 +1931,7 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu activity_main_drawer
+menu board_menu
 menu bottom_navigation_main
 menu main
 mipmap et
@@ -1944,6 +1977,7 @@ string alarm_follow
 string app_name
 string appbar_scrolling_view_behavior
 string back
+string board_delete
 string bottom_sheet_behavior
 string character_counter_content_description
 string character_counter_pattern
@@ -2122,6 +2156,7 @@ string nav_header_subtitle
 string nav_header_title
 string navigation_drawer_close
 string navigation_drawer_open
+string ocr_result_tip
 string password
 string password_toggle_content_description
 string path_password_eye
@@ -2157,6 +2192,7 @@ style Animation_AppCompat_Tooltip
 style Animation_Design_BottomSheetDialog
 style AppTheme
 style AppTheme_AppBarOverlay
+style AppTheme_EditText
 style AppTheme_NoActionBar
 style AppTheme_PopupOverlay
 style Base_AlertDialog_AppCompat
@@ -2428,6 +2464,7 @@ style Platform_V25_AppCompat
 style Platform_V25_AppCompat_Light
 style Platform_Widget_AppCompat_Spinner
 style ProgressDialogStyle
+style RatingBar
 style RtlOverlay_DialogWindowTitle_AppCompat
 style RtlOverlay_Widget_AppCompat_ActionBar_TitleItem
 style RtlOverlay_Widget_AppCompat_DialogTitle_Icon
@@ -2767,6 +2804,7 @@ styleable BottomAppBar backgroundTint fabAlignmentMode fabCradleMargin fabCradle
 styleable BottomNavigationView elevation itemBackground itemHorizontalTranslationEnabled itemIconSize itemIconTint itemTextAppearanceActive itemTextAppearanceInactive itemTextColor labelVisibilityMode menu
 styleable BottomSheetBehavior_Layout behavior_fitToContents behavior_hideable behavior_peekHeight behavior_skipCollapsed
 styleable ButtonBarLayout allowStacking
+styleable CameraBridgeViewBase camera_id show_fps
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
 styleable Chip android_textAppearance android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipStartPadding chipStrokeColor chipStrokeWidth closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible hideMotionSpec iconEndPadding iconStartPadding rippleColor showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical singleLine singleSelection

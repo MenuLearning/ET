@@ -1,6 +1,9 @@
 package com.example.s1.menuui
 
+import android.app.AlertDialog
+import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.gesture.Gesture
 import android.graphics.PorterDuff
@@ -12,7 +15,9 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -35,6 +40,7 @@ class UserFragment : Fragment() {
     var currentUserUid : String? = null
     var contentDTOs : ArrayList<ContentDTO> = arrayListOf()
     var contentSnapshotId : ArrayList<String> = arrayListOf()
+    var myContext : FragmentActivity? = null
 
     companion object {
         var PICK_PROFILE_FROM_ALBUM = 10
@@ -73,8 +79,15 @@ class UserFragment : Fragment() {
             fragmentView?.account_reyclerview?.addOnItemTouchListener(object : RecyclerView.OnItemTouchListener {
                 private val gestureDetector : GestureDetector = GestureDetector(context, object: GestureDetector.SimpleOnGestureListener() {
                     override fun onSingleTapUp(e: MotionEvent?): Boolean {
+                        Log.d("Touch", "Single Tap Up in")
                         return true
                     }
+                    /*
+                    override fun onLongPress(e: MotionEvent?) {
+                        Log.d("Touch", "Long Press in")
+                        super.onLongPress(e)
+                    }
+                     */
                 })
                 override fun onInterceptTouchEvent(rv: RecyclerView, e: MotionEvent): Boolean {
                     val child = account_reyclerview.findChildViewUnder(e.x, e.y)
@@ -93,18 +106,12 @@ class UserFragment : Fragment() {
 
                 override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
             })
+
         }else{
             //OtherUserPage
             Log.d(TAG, "other user page in")
             fragmentView?.account_btn_follow_signout?.text = getString(R.string.follow)
-//            var mainactivity = (activity as MainActivity)
-//            mainactivity?.toolbar_username?.text = arguments?.getString("userId")
-//            mainactivity?.toolbar_btn_back?.setOnClickListener {
-//                mainactivity.bottom_navigation.selectedItemId = R.id.action_home
-//            }
 
-//            mainactivity?.toolbar_username?.visibility = View.VISIBLE
-//            mainactivity?.toolbar_btn_back?.visibility = View.VISIBLE
             fragmentView?.account_btn_follow_signout?.setOnClickListener {
                 requestFollow()
             }
@@ -211,7 +218,7 @@ class UserFragment : Fragment() {
     }
     fun getProfileImage(){
         Log.d(TAG, "getProfileImage UID : " + uid)
-        // document 에 넣는 parameter uid로 설정한 이유..!!? -> 일단 currentUserUid로 바꿔놓음
+        // document ???ｋ뒗 parameter uid濡??ㅼ젙???댁쑀..!!? -> ?쇰떒 currentUserUid濡?諛붽퓭?볦쓬
         firestore?.collection("profileImages")?.document(currentUserUid!!)?.addSnapshotListener { documentSnapshot, firebaseFirestoreException ->
             if(documentSnapshot == null) return@addSnapshotListener
             if(documentSnapshot.data != null){
@@ -220,8 +227,33 @@ class UserFragment : Fragment() {
             }
         }
     }
+
+    fun deleteThePost(pos: Int) {
+        firestore?.collection("images")?.whereEqualTo("timestamp", contentDTOs[pos].timestamp)?.addSnapshotListener{
+                querySnapshot, exception ->
+
+            if (querySnapshot == null) return@addSnapshotListener
+
+            for (snapshot in querySnapshot.documents) {
+                contentDTOs.removeAt(pos)
+                snapshot.reference.delete()
+                fragmentView?.account_reyclerview?.adapter?.notifyDataSetChanged()
+            }
+        }
+    }
+
+    fun showConfirmMessage(pos: Int) {
+        var dialog = AlertDialog.Builder(activity)
+            .setMessage("Do you want to delete this post?")
+            .setPositiveButton("OK", DialogInterface.OnClickListener{
+                    dialog, which -> deleteThePost(pos)
+                Toast.makeText(context, "Delete!", Toast.LENGTH_SHORT).show()
+            }).create().show()
+
+    }
+
     inner class UserFragmentRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
-//        var contentDTOs : ArrayList<ContentDTO> = arrayListOf()
+        //        var contentDTOs : ArrayList<ContentDTO> = arrayListOf()
         init {
             firestore?.collection("images")?.whereEqualTo("uid",uid)?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 //Sometimes, This code return null of querySnapshot when it signout
@@ -245,19 +277,16 @@ class UserFragment : Fragment() {
 
             var imageview = ImageView(p0.context)
             imageview.layoutParams = LinearLayoutCompat.LayoutParams(width,width)
+
+            imageview.setOnLongClickListener {
+                Log.d("Touch", "LONG PRESS IN")
+                showConfirmMessage(p1)
+                true
+            }
             return CustomViewHolder(imageview)
         }
 
         inner class CustomViewHolder(var imageview: ImageView) : RecyclerView.ViewHolder(imageview) {
-/*            fun bind (contentDTO: ContentDTO, context: Context) {
-                imageview.setOnClickListener {
-                    Toast.makeText(context, "click in!" + contentDTO.explain, Toast.LENGTH_SHORT).show()
-//                    val intent = Intent(context, BoardActivity::class.java)
-//                    intent.putExtra("contents", contentDTO)
-                }
-            }
-
- */
         }
 
         inner class Holder(itemView: View, itemClick: (ContentDTO) -> Unit) : RecyclerView.ViewHolder(itemView) {
@@ -269,6 +298,7 @@ class UserFragment : Fragment() {
         }
 
         override fun onBindViewHolder(p0: RecyclerView.ViewHolder, p1: Int) {
+            val TAG = "Touch"
             var imageview = (p0 as CustomViewHolder).imageview
             Glide.with(p0.itemView.context).load(contentDTOs[p1].imageUrl).apply(RequestOptions().centerCrop()).into(imageview)
         }

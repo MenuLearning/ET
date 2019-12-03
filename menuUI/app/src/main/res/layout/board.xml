@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<LinearLayout
-    android:layout_height="match_parent"
+<LinearLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:menu="@menu/board_menu">
 
         <TextView
             android:layout_width="wrap_content"
@@ -18,6 +19,18 @@
             android:textStyle="bold"
             android:textSize="20dp"/>
 
+        <Button
+            android:id="@+id/board_delete_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="220dp"
+            android:backgroundTint="@color/colorWhite"
+            android:text="Delete"
+            android:textColor="@color/grey_500"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:visibility="invisible"
+            />
     </androidx.appcompat.widget.Toolbar>
 
     <LinearLayout
@@ -99,7 +112,9 @@
     <ListView
         android:id="@+id/detailView_comment_lv"
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="150dp"
+        android:listSelector="@color/colorPrimary"
+        android:choiceMode="singleChoice"/>
 
     <LinearLayout
         android:layout_width="match_parent"

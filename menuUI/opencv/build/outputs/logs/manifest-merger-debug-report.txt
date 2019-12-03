@@ -1,37 +1,37 @@
 -- Merging decision tree log ---
 manifest
-ADDED from F:\menu2\opencv\java\AndroidManifest.xml:2:1-6:12
-INJECTED from F:\menu2\opencv\java\AndroidManifest.xml:2:1-6:12
-INJECTED from F:\menu2\opencv\java\AndroidManifest.xml:2:1-6:12
-INJECTED from F:\menu2\opencv\java\AndroidManifest.xml:2:1-6:12
-INJECTED from F:\menu2\opencv\java\AndroidManifest.xml:2:1-6:12
-INJECTED from F:\menu2\opencv\java\AndroidManifest.xml:2:1-6:12
-INJECTED from F:\menu2\opencv\java\AndroidManifest.xml:2:1-6:12
+ADDED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml:2:1-6:12
+INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml:2:1-6:12
 	package
-		ADDED from F:\menu2\opencv\java\AndroidManifest.xml:3:7-27
-		INJECTED from F:\menu2\opencv\java\AndroidManifest.xml
-		INJECTED from F:\menu2\opencv\java\AndroidManifest.xml
+		ADDED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml:3:7-27
+		INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
+		INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
 	android:versionName
-		ADDED from F:\menu2\opencv\java\AndroidManifest.xml:5:7-34
-		INJECTED from F:\menu2\opencv\java\AndroidManifest.xml
-		INJECTED from F:\menu2\opencv\java\AndroidManifest.xml
+		ADDED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml:5:7-34
+		INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
+		INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
 	xmlns:android
-		ADDED from F:\menu2\opencv\java\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml:2:11-69
 	android:versionCode
-		ADDED from F:\menu2\opencv\java\AndroidManifest.xml:4:7-33
-		INJECTED from F:\menu2\opencv\java\AndroidManifest.xml
-		INJECTED from F:\menu2\opencv\java\AndroidManifest.xml
+		ADDED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml:4:7-33
+		INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
+		INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
 uses-sdk
-INJECTED from F:\menu2\opencv\java\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from F:\menu2\opencv\java\AndroidManifest.xml
-INJECTED from F:\menu2\opencv\java\AndroidManifest.xml
-INJECTED from F:\menu2\opencv\java\AndroidManifest.xml
-INJECTED from F:\menu2\opencv\java\AndroidManifest.xml
+INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
+INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
+INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
+INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
 	android:targetSdkVersion
-		INJECTED from F:\menu2\opencv\java\AndroidManifest.xml
-		ADDED from F:\menu2\opencv\java\AndroidManifest.xml
-		INJECTED from F:\menu2\opencv\java\AndroidManifest.xml
+		INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
+		ADDED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
+		INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from F:\menu2\opencv\java\AndroidManifest.xml
-		ADDED from F:\menu2\opencv\java\AndroidManifest.xml
-		INJECTED from F:\menu2\opencv\java\AndroidManifest.xml
+		INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
+		ADDED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
+		INJECTED from C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml

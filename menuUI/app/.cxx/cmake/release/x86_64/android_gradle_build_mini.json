@@ -1,19 +1,19 @@
 {
   "buildFiles": [
-    "C:\\Users\\kkuy6\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\build\\cmake\\platforms.cmake",
-    "C:\\Users\\kkuy6\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\build\\cmake\\android.toolchain.cmake",
-    "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\src\\main\\cpp\\CMakeLists.txt"
+    "C:\\Users\\CS402A\\AppData\\Local\\Android\\Sdk\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
+    "C:\\Users\\CS402A\\AppData\\Local\\Android\\Sdk\\ndk\\20.0.5594570\\build\\cmake\\platforms.cmake",
+    "C:\\Users\\CS402A\\ET-master\\menuUI\\app\\src\\main\\cpp\\CMakeLists.txt"
   ],
   "cleanCommands": [
-    "C:\\Users\\kkuy6\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\release\\x86_64\" clean"
+    "C:\\Users\\CS402A\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CS402A\\ET-master\\menuUI\\app\\.cxx\\cmake\\release\\x86_64\" clean"
   ],
-  "buildTargetsCommand": "C:\\Users\\kkuy6\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\release\\x86_64\" {LIST_OF_TARGETS_TO_BUILD}",
+  "buildTargetsCommand": "C:\\Users\\CS402A\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CS402A\\ET-master\\menuUI\\app\\.cxx\\cmake\\release\\x86_64\" {LIST_OF_TARGETS_TO_BUILD}",
   "libraries": {
     "native-lib-Release-x86_64": {
       "artifactName": "native-lib",
-      "buildCommand": "C:\\Users\\kkuy6\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\release\\x86_64\" native-lib",
+      "buildCommand": "C:\\Users\\CS402A\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CS402A\\ET-master\\menuUI\\app\\.cxx\\cmake\\release\\x86_64\" native-lib",
       "abi": "x86_64",
-      "output": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\build\\intermediates\\cmake\\release\\obj\\x86_64\\libnative-lib.so"
+      "output": "C:\\Users\\CS402A\\ET-master\\menuUI\\app\\build\\intermediates\\cmake\\release\\obj\\x86_64\\libnative-lib.so"
     }
   }
 }

@@ -41,8 +41,8 @@
         <activity
             android:name=".OpencvActivity"
             android:configChanges="keyboardHidden|orientation" /> <!-- android:screenOrientation="landscape" -->
-        <activity android:name=".CommentActivity" />
         <activity android:name=".AddPhotoActivity" />
+        <activity android:name=".AddPostActivitiy"/>
         <activity android:name=".LoginActivity" />
         <activity
             android:name=".StartActivity"
@@ -76,7 +76,7 @@
             android:label="Board"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-            android:theme="@style/AppTheme.NoActionBar" />
+            <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
     </application>
 
 </manifest>

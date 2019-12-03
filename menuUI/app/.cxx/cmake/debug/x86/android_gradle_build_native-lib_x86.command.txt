@@ -1,7 +1,7 @@
-Executable : C:\Users\kkuy6\AppData\Local\Android\Sdk\cmake\3.10.2.4988404\bin\ninja.exe
+Executable : C:\Users\CS402A\AppData\Local\Android\Sdk\cmake\3.10.2.4988404\bin\ninja.exe
 arguments : 
 -C
-C:\Users\kkuy6\AndroidStudioProjects\menuUI\app\.cxx\cmake\debug\x86
+C:\Users\CS402A\ET-master\menuUI\app\.cxx\cmake\debug\x86
 native-lib
 jvmArgs : 
 

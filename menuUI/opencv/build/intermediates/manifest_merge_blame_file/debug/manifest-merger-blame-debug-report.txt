@@ -6,8 +6,8 @@
 6
 7    <uses-sdk
 8        android:minSdkVersion="21"
-8-->F:\menu2\opencv\java\AndroidManifest.xml
+8-->C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
 9        android:targetSdkVersion="26" />
-9-->F:\menu2\opencv\java\AndroidManifest.xml
+9-->C:\Users\CS402A\ET-master\menuUI\opencv\java\AndroidManifest.xml
 10
 11</manifest>
