@@ -64,7 +64,36 @@
     <string name="menu_freeboard">Free Board</string>
     <string name="menu_wish_menu">Wish Menu</string>
 
-    <string name="ocr_result_tip">인식 결과는 여기에 나타납니다.</string>
-
+    <!-- Board Menu -->
     <string name="board_delete">Delete</string>
+
+    <!-- QnA Menu -->
+    <string name="question">Question : </string>
+    <string name="writer">Writer : </string>
+    <string name="date">Date : </string>
+    <string name="view_cnt">View : </string>
+
+    <!-- Activity - Find Location -->
+    <string name="find_location">Find Location</string>
+    <string name="location">Location</string>
+    <string name="register">Register</string>
+    <string name="missing_address">Please Enter Additional Address</string>
+
+    <!-- AddQnaActivity -->
+    <string name="title">Title</string>
+    <string name="content">Content</string>
+    <string name="add_qna">Add Q&amp;A</string>
+    <string name="title_empty">Title is empty. Please enter the title</string>
+    <string name="content_empty">Content is empty. Please enter the content</string>
+
+    <!-- AddPostActivity -->
+    <string name="image_null">Image is not uploaded. Please upload your image</string>
+
+    <!-- FreeBoard -->
+    <string name="view_comment">View Comments...</string>
+    <string name="search_warning_message">Please enter your search keyword!</string>
+
+    <!-- Translation -->
+    <string name="translation">Translation</string>
+    <string name="more_info">More</string>
 </resources>

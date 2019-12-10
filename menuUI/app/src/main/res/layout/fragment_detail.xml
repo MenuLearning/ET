@@ -13,17 +13,31 @@
             android:id="@+id/freeboard_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:layout_marginTop="10dp"
-            android:text="Free Board"/>
+            android:layout_weight="1"
+            android:text="Free Board"
+            android:textColor="@color/dark_grey"
+            android:backgroundTint="@android:color/transparent"
+            android:background="@android:color/transparent"/>
 
         <Button
             android:id="@+id/qna_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="10dp"
+            android:layout_weight="1"
             android:text="Q&amp;A"
+            android:textColor="@color/dark_grey"
+            android:backgroundTint="@android:color/transparent"
+            android:background="@android:color/transparent"
+            />
+        <Button
+            android:id="@+id/test_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Test"
+            android:textColor="@color/dark_grey"
+            android:backgroundTint="@android:color/transparent"
+            android:background="@android:color/transparent"
             />
     </LinearLayout>
 

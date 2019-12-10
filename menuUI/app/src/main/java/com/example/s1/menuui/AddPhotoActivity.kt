@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.core.app.ActivityCompat.startActivityForResult
 import com.google.android.gms.tasks.Task
@@ -48,6 +49,7 @@ class AddPhotoActivity : AppCompatActivity() {
             if(resultCode == Activity.RESULT_OK){
                 //This is path to the selected image
                 photoUri = data?.data
+                Log.d("ADD", photoUri.toString())
                 addphoto_image.setImageURI(photoUri)
             } else{
                 finish()
@@ -60,6 +62,8 @@ class AddPhotoActivity : AppCompatActivity() {
         var imageFileName = "IMAGE_" + timestamp + "_.png"
 
         var storageRef = storage?.reference?.child("images")?.child(imageFileName)
+
+        Log.d("ADD", "photoUri : " + photoUri.toString())
 
         storageRef?.putFile(photoUri!!)?.continueWithTask { task: Task<UploadTask.TaskSnapshot> ->
             return@continueWithTask storageRef.downloadUrl

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:layout_centerHorizontal="true">
 
     <TextView
         android:id="@+id/textView"
@@ -12,45 +12,69 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Please capture the menu"
-        android:textSize="30sp"
+        android:textSize="25dp"
         android:textStyle="bold"
         android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
         android:textColor="#69cadc"/>
 
     <!-- ImageView in whic image will be set -->
 
     <ImageView
         android:id="@+id/image_view"
-        android:layout_width="242dp"
-        android:layout_height="258dp"
-        android:layout_below="@+id/textView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:scaleType="centerCrop"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="10dp"
         android:src="@drawable/ic_restaurant_menu_black_24dp" />
 
     <!-- Button to open camera -->
 
     <ImageButton
         android:id="@+id/capture_btn"
-        android:layout_width="107dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/image_view"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        android:layout_marginVertical="30dp"
-        android:background="#F3FFFFFF"
-        app:srcCompat="@drawable/click_icon" />
+        android:background="@android:color/transparent"
+        app:srcCompat="@drawable/camera2_icon_64"
+        android:layout_marginTop="10dp"
+        app:layout_constraintRight_toLeftOf="@id/gallery_test_btn"
+        app:layout_constraintTop_toBottomOf="@+id/image_view"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <ImageButton
+        android:id="@+id/gallery_test_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/image_view"
+        app:layout_constraintLeft_toRightOf="@id/capture_btn"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="10dp"
+        android:text="PICK PHOTO"
+        android:background="@android:color/transparent"
+        android:src="@drawable/gallery2_icon_64"/>
 
     <Button
         android:id="@+id/btn"
-        android:layout_width="105dp"
-        android:layout_height="wrap_content"
+        android:layout_width="90dp"
+        android:layout_height="30dp"
         android:layout_gravity="end"
         android:layout_below="@+id/image_view"
         android:background="@color/colorPrimary"
         android:layout_alignEnd="@id/textView"
         android:text="Translate"
-        android:textSize="15sp" />
+        android:textSize="15sp"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginVertical="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/capture_btn"/>
 
     <TextView
         android:id="@+id/rate"
@@ -58,44 +82,64 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/capture_btn"
         android:gravity="center_horizontal"
+        android:layout_marginVertical="10dp"
         android:text="Exchange Rate"
         android:textColor="#69cadc"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textSize="18dp"
+        app:layout_constraintTop_toBottomOf="@+id/btn"/>
 
     <Spinner
-        android:id="@+id/from"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/rate" />
-
-    <TextView
         android:id="@+id/from_country"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/from"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/rate"
+        app:layout_constraintTop_toBottomOf="@+id/rate"
+        app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <EditText
+        android:id="@+id/from"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/from_country"
         android:layout_alignParentStart="true"
         android:gravity="center_horizontal"
-        android:text="Korea won"
-        android:textSize="20sp" />
+        android:inputType="number"
+        android:text="1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/from_country"/>
 
     <Spinner
+        android:id="@+id/to_country"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/rate"
+        app:layout_constraintTop_toBottomOf="@+id/rate"
+        app:layout_constraintLeft_toRightOf="@id/from"/>
+
+    <EditText
         android:id="@+id/to"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@+id/rate"/>
-
-    <TextView
-        android:id="@+id/to_country"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/to"
+        android:layout_below="@+id/to_country"
         android:layout_alignParentEnd="true"
         android:gravity="center_horizontal"
-        android:text="US dollar"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/to_country"
+        app:layout_constraintLeft_toRightOf="@id/from"/>
 
+    <!--
+    <Button
+        android:id="@+id/search_test_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/to"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="TEST"/>
+    -->
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

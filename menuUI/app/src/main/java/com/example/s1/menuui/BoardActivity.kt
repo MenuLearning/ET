@@ -17,18 +17,19 @@ import android.graphics.Color
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.app.ComponentActivity.ExtraData
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.text.method.ScrollingMovementMethod
 import android.view.ContextThemeWrapper
 import android.view.Menu
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
+import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.board.view.*
+import kotlinx.android.synthetic.main.fragment_user.view.*
 
 
 class BoardActivity : AppCompatActivity() {
     val firestore = FirebaseFirestore.getInstance()
-//    var docId : String? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,15 +44,16 @@ class BoardActivity : AppCompatActivity() {
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
         val commentDeleteBtn = findViewById<Button>(R.id.board_delete_btn)
         var selectedItemPos = -1
+        var commentListAdapter: CommentListAdapter? = null
 
         setSupportActionBar(toolbar)
         val ab = supportActionBar!!
         ab.setDisplayShowTitleEnabled(false)
         ab.setDisplayHomeAsUpEnabled(true)
         commentDeleteBtn.isVisible = false
+        boardTextView.movementMethod = ScrollingMovementMethod()
 
         var intent = intent
-//        var contents: String
         var contentDTO: ContentDTO = intent.getParcelableExtra("content")
         var docId = intent.getStringExtra("snapshotId")
 
@@ -64,9 +66,16 @@ class BoardActivity : AppCompatActivity() {
         // set user Id
         detailviewitem_profile_textview.text = contentDTO.userId
         // set profile Image
+        firestore?.collection("profileImages")?.document(contentDTO.uid!!)?.addSnapshotListener { documentSnapshot, firebaseFirestoreException ->
+            if(documentSnapshot == null) return@addSnapshotListener
+            if(documentSnapshot.data != null){
+                var url = documentSnapshot?.data!!["image"]
+                Glide.with(this).load(url).apply(RequestOptions().circleCrop()).into(detailviewitem_profile_image)
+            }
+        }
 
         var comments = arrayListOf<CommentDTO>()
-//        var commentProfileURL = hashMapOf<String, String>()
+
         firestore.collection("images").document(docId).collection("comments")
             .orderBy("timestamp").addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 comments.clear()
@@ -77,9 +86,10 @@ class BoardActivity : AppCompatActivity() {
                     var comment = snapshot.toObject(CommentDTO::class.java)
                     comments.add(comment)
                 }
+                commentListAdapter?.notifyDataSetChanged()
             }
 
-        var commentListAdapter = CommentListAdapter(comments)
+        commentListAdapter = CommentListAdapter(comments)
         commentListView.adapter = commentListAdapter
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
@@ -100,31 +110,23 @@ class BoardActivity : AppCompatActivity() {
             val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(newCommentsEditText.windowToken, 0)
         }
-        var isClicked = false
+
+        var previousPos = -1
+
         commentListView.setOnItemClickListener { parent, view, position, id ->
-            commentDeleteBtn.isVisible = true
             selectedItemPos = position
-            Log.d("SELECT", "select : " + parent.selectedItemPosition)
-            if (isClicked) {
-//                var builder = AlertDialog.Builder(ContextThemeWrapper(this@BoardActivity, R.style.Theme_AppCompat_Dialog))
-//                parent.isSelected = false
-//                view.invalidate()
-//                commentListView.setItemChecked(position, false)
-                view.setBackgroundColor(Color.WHITE)
-//                Log.d("SELECT", parent.selectedItemPosition.toString())
-                if (comments[position].uid == FirebaseAuth.getInstance().currentUser?.uid!!) {
-                    commentDeleteBtn.isVisible = false
-                }
+
+            if (previousPos == position) {
+                view.setBackgroundColor(getColor(R.color.defaultWhite))
+                commentDeleteBtn.isVisible = false
             }
             else {
-                view.setBackgroundColor(Color.WHITE)
                 commentDeleteBtn.isVisible = true
             }
-            isClicked = !isClicked
+            previousPos = position
         }
 
         commentDeleteBtn.setOnClickListener {
-            //            var pos = commentListView.selectedItemPosition
             Log.d("SELECT", selectedItemPos.toString())
             var cmtId : String = ""
             firestore.collection("images").document(docId).collection("comments")
@@ -134,11 +136,7 @@ class BoardActivity : AppCompatActivity() {
                     for (snapshot in querySnapshot.documents) {
                         cmtId = snapshot.id
                         Log.d("SELECT", snapshot.reference.toString())
-                        Log.d("SELECT", "selected : " + commentListView.selectedItemPosition.toString())
-//                        commentListView.selector.setVisible(false, true)
                         snapshot.reference.delete()
-//                        Log.d("SELECT", cmtId)
-                        Log.d("SELECT", "after delete" + commentListView.selectedItemPosition.toString())
                         comments.removeAt(selectedItemPos)
                         commentListView.adapter = commentListAdapter
                     }

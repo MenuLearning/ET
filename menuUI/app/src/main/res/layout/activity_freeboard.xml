@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<LinearLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/free_post_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:menu="@menu/board_menu">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Review"
+            android:textStyle="bold"
+            android:textSize="20dp"/>
+
+        <Button
+            android:id="@+id/freeboard_delete_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="@android:color/transparent"
+            android:background="@android:color/transparent"
+            android:text="Delete"
+            android:textColor="@color/grey_500"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            android:visibility="invisible"
+            />
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:layout_height="35dp"
+            android:layout_width="35dp"
+            android:layout_margin="7.5dp"
+            android:src="@mipmap/ic_launcher"
+            android:id="@+id/free_post_profile_iv"/>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:id="@+id/free_post_profile_tv"
+            android:text="User name"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/free_post_iv"
+        android:layout_height="250dp"
+        android:layout_width="match_parent"
+        android:scaleType="fitXY"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Menu"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/free_item_menu_tv"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Menu" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:text="Location"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/free_item_restaurant_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginLeft="5dp"
+                android:text="Where?" />
+        </LinearLayout>
+
+        <RatingBar
+            android:id="@+id/free_post_rating_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:rating="5"
+            style="?android:attr/ratingBarStyleSmall" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="Review"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/free_post_review_tv"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="4"
+        android:text="Review"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"/>
+    <Button
+        android:id="@+id/free_post_view_cmt_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorTransparent"
+        android:background="@color/colorTransparent"
+        android:text="@string/view_comment"
+        android:textColor="@color/dark_grey"/>
+    <!--
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="2dp"
+            android:text="comments" />
+
+        <EditText
+            android:id="@+id/comments_edit_text"
+            android:layout_width="269dp"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/comments_write_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="write" />
+    </LinearLayout>
+    -->
+</LinearLayout>

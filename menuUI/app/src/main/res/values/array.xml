@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="my_array">
+        <item>Australia AUD </item>
+        <item>Canada CAD </item>
+        <item>China CNY </item>
+        <item>EU EUR </item>
+        <item>England GBP </item>
+        <item>Hongkong HKD </item>
+        <item>Indonesia IDR </item>
+        <item>Japan JPY </item>
+        <item>Malaysia MYR </item>
+        <item>Philippines PHP </item>
+        <item>Russia RUB </item>
+        <item>Singapore SGD </item>
+        <item>Thailand THB </item>
+        <item>Taiwan TWD </item>
+        <item>US dollar USD </item>
+        <item>Vietnam VND </item>
+    </string-array>
+</resources>

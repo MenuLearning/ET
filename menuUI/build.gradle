@@ -6,7 +6,9 @@ buildscript {
         google()
         jcenter()
         mavenCentral()
-        
+        maven {
+            url 'https://dl.bintray.com/kotlin/kotlin-dev/'
+        }
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
@@ -21,7 +23,10 @@ allprojects {
     repositories {
         google()
         jcenter()
-        
+        mavenCentral()
+        maven {
+            url 'https://dl.binary.com/kotlin/kotlin-dev/'
+        }
     }
 }
 

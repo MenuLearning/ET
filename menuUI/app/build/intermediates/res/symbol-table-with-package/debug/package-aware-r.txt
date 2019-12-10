@@ -43,6 +43,7 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+array my_array
 attr action
 attr actionBarDivider
 attr actionBarItemBackground
@@ -85,6 +86,7 @@ attr alertDialogTheme
 attr allowStacking
 attr alpha
 attr alphabeticModifiers
+attr ambientEnabled
 attr argType
 attr arrowHeadLength
 attr arrowShaftLength
@@ -137,7 +139,13 @@ attr buttonStyle
 attr buttonStyleSmall
 attr buttonTint
 attr buttonTintMode
-attr camera_id
+attr cameraBearing
+attr cameraMaxZoomPreference
+attr cameraMinZoomPreference
+attr cameraTargetLat
+attr cameraTargetLng
+attr cameraTilt
+attr cameraZoom
 attr cardBackgroundColor
 attr cardCornerRadius
 attr cardElevation
@@ -351,6 +359,10 @@ attr itemTextColor
 attr keylines
 attr labelVisibilityMode
 attr lastBaselineToBottomHeight
+attr latLngBoundsNorthEastLatitude
+attr latLngBoundsNorthEastLongitude
+attr latLngBoundsSouthWestLatitude
+attr latLngBoundsSouthWestLongitude
 attr launchSingleTop
 attr layout
 attr layoutManager
@@ -432,8 +444,10 @@ attr listPreferredItemPaddingEnd
 attr listPreferredItemPaddingLeft
 attr listPreferredItemPaddingRight
 attr listPreferredItemPaddingStart
+attr liteMode
 attr logo
 attr logoDescription
+attr mapType
 attr materialButtonStyle
 attr materialCardViewStyle
 attr maxActionInlineWidth
@@ -509,7 +523,6 @@ attr showDividers
 attr showMotionSpec
 attr showText
 attr showTitle
-attr show_fps
 attr singleChoiceItemLayout
 attr singleLine
 attr singleSelection
@@ -630,8 +643,17 @@ attr track
 attr trackTint
 attr trackTintMode
 attr ttcIndex
+attr uiCompass
+attr uiMapToolbar
+attr uiRotateGestures
+attr uiScrollGestures
+attr uiScrollGesturesDuringRotateOrZoom
+attr uiTiltGestures
+attr uiZoomControls
+attr uiZoomGestures
 attr uri
 attr useCompatPadding
+attr useViewLifecycle
 attr viewInflaterClass
 attr voiceIcon
 attr windowActionBar
@@ -644,6 +666,7 @@ attr windowFixedWidthMinor
 attr windowMinWidthMajor
 attr windowMinWidthMinor
 attr windowNoTitle
+attr zOrderOnTop
 bool abc_action_bar_embed_tabs
 bool abc_allow_stacked_button_bar
 bool abc_config_actionMenuItemAllCaps
@@ -697,6 +720,7 @@ color cardview_shadow_start_color
 color colorAccent
 color colorDivision
 color colorHighlight
+color colorLightPrimary
 color colorMint
 color colorNavIcon
 color colorPrimary
@@ -736,6 +760,8 @@ color common_google_signin_btn_text_light_disabled
 color common_google_signin_btn_text_light_focused
 color common_google_signin_btn_text_light_pressed
 color common_google_signin_btn_tint
+color dark_grey
+color defaultWhite
 color design_bottom_navigation_shadow_color
 color design_default_color_primary
 color design_default_color_primary_dark
@@ -1186,6 +1212,7 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable background_cmt_lv
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -1194,6 +1221,10 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable camera2_icon_64
+drawable camera_icon_100
+drawable camera_icon_128
+drawable camera_icon_64
 drawable click_icon
 drawable com_facebook_auth_dialog_background
 drawable com_facebook_auth_dialog_cancel_background
@@ -1250,10 +1281,6 @@ drawable design_password_eye
 drawable design_snackbar_background
 drawable fab_plus_icon
 drawable firebase_lockup_400
-drawable food1
-drawable food2
-drawable food3
-drawable food4
 drawable fui_ic_anonymous_white_24dp
 drawable fui_ic_check_circle_black_128dp
 drawable fui_ic_facebook_white_22dp
@@ -1269,6 +1296,9 @@ drawable fui_idp_button_background_github
 drawable fui_idp_button_background_google
 drawable fui_idp_button_background_phone
 drawable fui_idp_button_background_twitter
+drawable gallery2_icon_64
+drawable gallery_icon_32
+drawable gallery_icon_64
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable heart_off_16
@@ -1312,6 +1342,7 @@ drawable messenger_button_white_bg_selector
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
 drawable navigation_empty_icon
+drawable new_camera_icon_64
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -1326,7 +1357,14 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable reg_btn_style
 drawable reg_edittext_style
+drawable search_icon_24
+drawable search_icon_32
 drawable side_nav_bar
+drawable thumbs_down_24
+drawable thumbs_up
+drawable thumbs_up_24
+drawable thums_up_icon
+drawable toolbar_login_icon_32
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
 drawable user
@@ -1391,6 +1429,7 @@ id action_divider
 id action_favorite_alarm
 id action_home
 id action_image
+id action_login
 id action_menu_divider
 id action_menu_presenter
 id action_mode_bar
@@ -1401,9 +1440,12 @@ id action_settings
 id action_text
 id actions
 id activity_chooser_view_content
-id activity_surface_view
 id add
+id add_qna_content_edit_tv
+id add_qna_send_btn
+id add_qna_title_edit_tv
 id add_wish_button
+id additional_address_edit_tv
 id addphoto_btn_upload
 id addphoto_edit_explain
 id addphoto_image
@@ -1414,15 +1456,17 @@ id alertTitle
 id all
 id always
 id anonymous_button
-id any
+id appBarLayout
 id async
 id auto
 id automatic
-id back
 id barrier
 id beginning
 id blocking
 id board_delete_btn
+id board_favorite_layout
+id board_info_layout
+id board_like_layout
 id bottom
 id bottom_navigation
 id box_count
@@ -1434,8 +1478,6 @@ id browser_actions_menu_view
 id btn
 id btn_holder
 id button
-id button2
-id button3
 id buttonPanel
 id button_continue
 id button_create
@@ -1491,6 +1533,7 @@ id contentPanel
 id coordinator
 id country_list
 id cross_device_linking_body
+id current_location_tv
 id custom
 id customPanel
 id dark
@@ -1516,7 +1559,6 @@ id dimensions
 id direct
 id disableHome
 id display_always
-id drawer_layout
 id dynamic
 id edit_phone_number
 id edit_query
@@ -1542,21 +1584,35 @@ id fixed
 id forever
 id fragment_phone
 id fragment_register_email
+id free_frag_linear
+id free_item_menu_tv
+id free_item_restaurant_tv
+id free_post_iv
+id free_post_profile_iv
+id free_post_profile_tv
+id free_post_rating_bar
+id free_post_review_tv
+id free_post_toolbar
+id free_post_view_cmt_btn
 id freeboard_add_btn
 id freeboard_add_image_btn
 id freeboard_btn
+id freeboard_delete_btn
 id freeboard_food_menu_tv
 id freeboard_location_btn
 id freeboard_menu_edit_tv
 id freeboard_new_iv
 id freeboard_rating_bar
+id freeboard_recycler_view
 id freeboard_restaurant_edit_tv
 id freeboard_restaurant_tv
 id freeboard_review
 id freeboard_review_edit_tv
+id freeboard_search_btn
+id freeboard_search_edit_tv
 id from
 id from_country
-id front
+id gallery_test_btn
 id ghost_view
 id glide_custom_view_target_tag
 id gone
@@ -1570,13 +1626,13 @@ id heading
 id home
 id homeAsUp
 id horizontal
+id hybrid
 id icon
 id icon_group
 id icon_only
 id ifRoom
 id image
 id imageView
-id imageView3
 id image_view
 id info
 id inline
@@ -1584,6 +1640,9 @@ id invisible
 id invisible_frame
 id italic
 id item_touch_helper_previous_elevation
+id item_translation_korean_tv
+id item_translation_price_tv
+id item_translation_result_tv
 id labeled
 id large
 id largeLabel
@@ -1594,9 +1653,11 @@ id line1
 id line3
 id listMode
 id list_item
+id login_skip_btn
 id logo
 id main_content
 id main_tos_and_pp
+id mapView
 id masked
 id media_actions
 id message
@@ -1619,7 +1680,6 @@ id nav_myinfo
 id nav_prev_search
 id nav_qna
 id nav_search
-id nav_view
 id nav_wish_menu
 id navigation_header_container
 id never
@@ -1647,22 +1707,35 @@ id phone_layout
 id phone_number
 id pin
 id plus_fab
+id post_comments_num
 id post_delete
-id post_list
+id post_food_iv
 id post_location
 id post_menu
 id progress_bar
 id progress_circular
 id progress_horizontal
+id qna_add_btn
+id qna_board_content_tv
+id qna_board_title_tv
 id qna_btn
+id qna_comment_recyclerview
+id qna_date_tv
+id qna_toolbar
+id qna_view_cnt_tv
+id qna_view_item_title
+id qna_writer_tv
+id qnafragment_recyclerview
 id radio
 id rate
+id register_address_btn
 id resend_barrier
 id resend_code
 id right
 id right_icon
 id right_side
 id root
+id satellite
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
@@ -1671,7 +1744,6 @@ id scroll
 id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
-id scrollViewLayout
 id scrollable
 id search_badge
 id search_bar
@@ -1693,7 +1765,6 @@ id showHome
 id showTitle
 id sign_in_email_sent_header_text
 id sign_in_email_sent_text
-id skip
 id small
 id smallLabel
 id snackbar_action
@@ -1722,6 +1793,8 @@ id tag_screen_reader_focusable
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
+id terrain
+id test_btn
 id text
 id text2
 id textSpacerNoButtons
@@ -1730,13 +1803,13 @@ id textStart
 id textView
 id text_input_password_toggle
 id text_menu
-id text_search
 id text_where
-id text_wish_menu
 id textinput_counter
 id textinput_error
 id textinput_helper_text
-id thums_tv
+id thums_cnt_tv
+id thums_down_btn
+id thums_up_btn
 id ticker
 id time
 id title
@@ -1756,6 +1829,8 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id translate_recyclerview
+id translation_toolbar
 id trouble_signing_in
 id trouble_signing_in_possible_fixes
 id unchecked
@@ -1771,6 +1846,7 @@ id welcome_back_idp_button
 id welcome_back_idp_prompt
 id welcome_back_password_body
 id wide
+id wish_menu_recycler_view
 id withText
 id wrap
 id wrap_content
@@ -1833,12 +1909,15 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_add_photo
 layout activity_add_post
+layout activity_add_qna
 layout activity_comment
+layout activity_find_location
+layout activity_freeboard
 layout activity_login
 layout activity_main
-layout activity_opencv
-layout activity_pic2text
+layout activity_qna_board
 layout activity_start
+layout activity_translation
 layout app_bar_main
 layout bar_layout
 layout board
@@ -1901,6 +1980,8 @@ layout fui_welcome_back_idp_prompt_layout
 layout fui_welcome_back_password_prompt_layout
 layout item_comment
 layout item_detail
+layout item_qna
+layout item_translation
 layout messenger_button_send_blue_large
 layout messenger_button_send_blue_round
 layout messenger_button_send_blue_small
@@ -1971,6 +2052,7 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string account
 string action_settings
+string add_qna
 string alarm_comment
 string alarm_favorite
 string alarm_follow
@@ -2022,7 +2104,10 @@ string common_google_play_services_wear_update_text
 string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
+string content
+string content_empty
 string count_0
+string date
 string default_web_client_id
 string email
 string fab_transformation_scrim_behavior
@@ -2032,6 +2117,7 @@ string facebook_application_id
 string facebook_login_protocol_scheme
 string favorite
 string fb_login_protocol_scheme
+string find_location
 string firebase_database_url
 string firebase_web_host
 string follow
@@ -2140,6 +2226,8 @@ string google_storage_bucket
 string hide_bottom_view_on_scroll_behavior
 string hint_image_content
 string home
+string image_null
+string location
 string menu_freeboard
 string menu_home
 string menu_myinfo
@@ -2148,6 +2236,8 @@ string menu_qna
 string menu_search
 string menu_wish_menu
 string messenger_send_button_text
+string missing_address
+string more_info
 string mtrl_chip_close_icon_content_description
 string nav_app_bar_navigate_up_description
 string nav_app_bar_open_drawer_description
@@ -2156,7 +2246,6 @@ string nav_header_subtitle
 string nav_header_title
 string navigation_drawer_close
 string navigation_drawer_open
-string ocr_result_tip
 string password
 string password_toggle_content_description
 string path_password_eye
@@ -2166,8 +2255,11 @@ string path_password_strike_through
 string post
 string profile
 string project_id
+string question
+string register
 string search
 string search_menu_title
+string search_warning_message
 string send
 string signin_complete
 string signin_email
@@ -2179,11 +2271,17 @@ string signout_fail_null
 string signout_success
 string signup_complete
 string status_bar_notification_info_overflow
+string title
+string title_empty
+string translation
 string twitter_consumer_key
 string twitter_consumer_secret
 string upload_fail
 string upload_image
 string upload_success
+string view_cnt
+string view_comment
+string writer
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -2804,7 +2902,6 @@ styleable BottomAppBar backgroundTint fabAlignmentMode fabCradleMargin fabCradle
 styleable BottomNavigationView elevation itemBackground itemHorizontalTranslationEnabled itemIconSize itemIconTint itemTextAppearanceActive itemTextAppearanceInactive itemTextColor labelVisibilityMode menu
 styleable BottomSheetBehavior_Layout behavior_fitToContents behavior_hideable behavior_peekHeight behavior_skipCollapsed
 styleable ButtonBarLayout allowStacking
-styleable CameraBridgeViewBase camera_id show_fps
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
 styleable Chip android_textAppearance android_ellipsize android_maxWidth android_text android_checkable checkedIcon checkedIconEnabled checkedIconVisible chipBackgroundColor chipCornerRadius chipEndPadding chipIcon chipIconEnabled chipIconSize chipIconTint chipIconVisible chipMinHeight chipStartPadding chipStrokeColor chipStrokeWidth closeIcon closeIconEnabled closeIconEndPadding closeIconSize closeIconStartPadding closeIconTint closeIconVisible hideMotionSpec iconEndPadding iconStartPadding rippleColor showMotionSpec textEndPadding textStartPadding
 styleable ChipGroup checkedChip chipSpacing chipSpacingHorizontal chipSpacingVertical singleLine singleSelection
@@ -2834,6 +2931,7 @@ styleable LinearLayoutCompat android_gravity android_orientation android_baselin
 styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width android_layout_height android_layout_weight
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
 styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
+styleable MapAttrs ambientEnabled cameraBearing cameraMaxZoomPreference cameraMinZoomPreference cameraTargetLat cameraTargetLng cameraTilt cameraZoom latLngBoundsNorthEastLatitude latLngBoundsNorthEastLongitude latLngBoundsSouthWestLatitude latLngBoundsSouthWestLongitude liteMode mapType uiCompass uiMapToolbar uiRotateGestures uiScrollGestures uiScrollGesturesDuringRotateOrZoom uiTiltGestures uiZoomControls uiZoomGestures useViewLifecycle zOrderOnTop
 styleable MaterialButton android_insetLeft android_insetRight android_insetTop android_insetBottom backgroundTint backgroundTintMode cornerRadius icon iconGravity iconPadding iconSize iconTint iconTintMode rippleColor strokeColor strokeWidth
 styleable MaterialCardView strokeColor strokeWidth
 styleable MaterialComponentsTheme bottomSheetDialogTheme bottomSheetStyle chipGroupStyle chipStandaloneStyle chipStyle colorAccent colorBackgroundFloating colorPrimary colorPrimaryDark colorSecondary editTextStyle floatingActionButtonStyle materialButtonStyle materialCardViewStyle navigationViewStyle scrimBackground snackbarButtonStyle tabStyle textAppearanceBody1 textAppearanceBody2 textAppearanceButton textAppearanceCaption textAppearanceHeadline1 textAppearanceHeadline2 textAppearanceHeadline3 textAppearanceHeadline4 textAppearanceHeadline5 textAppearanceHeadline6 textAppearanceOverline textAppearanceSubtitle1 textAppearanceSubtitle2 textInputStyle

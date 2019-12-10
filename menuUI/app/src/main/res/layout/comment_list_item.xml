@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/comment_profile_image"
-        android:layout_width="49dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="5dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginLeft="6dp"
         tools:srcCompat="@tools:sample/avatars[15]" />
 
     <TextView

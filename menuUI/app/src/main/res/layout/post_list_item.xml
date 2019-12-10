@@ -3,46 +3,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants"
     >
-
+    <!--
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/thums_up_btn"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginTop="5dp"
         android:text="+" />
+    -->
+
+    <ImageButton
+        android:id="@+id/thums_up_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/thumbs_up_24"
+        android:backgroundTint="@color/colorTransparent"/>
 
     <TextView
-        android:id="@+id/thums_tv"
+        android:id="@+id/thums_cnt_tv"
         android:layout_width="35dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button2"
+        android:layout_below="@id/thums_up_btn"
         android:textAlignment="center"
         android:text="1" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/post_food_iv"
         android:layout_width="90dp"
         android:layout_height="90dp"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"
-        android:layout_toRightOf="@id/button2"
+        android:layout_toRightOf="@id/thums_up_btn"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_below="@id/thums_tv"
-        android:text="-" />
+    <ImageButton
+        android:id="@+id/thums_down_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/thums_cnt_tv"
+        android:src="@drawable/thumbs_down_24"
+        android:backgroundTint="@color/colorTransparent"/>
 
     <TextView
         android:id="@+id/text_where"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/imageView3"
+        android:layout_toRightOf="@id/post_food_iv"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:textSize="20dp"
@@ -52,7 +62,7 @@
         android:id="@+id/text_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/imageView3"
+        android:layout_toRightOf="@id/post_food_iv"
         android:layout_below="@id/text_where"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
@@ -61,31 +71,41 @@
         />
     <TextView
         android:id="@+id/post_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/text_where"
+        android:layout_width="145dp"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@id/text_where"
         android:layout_toRightOf="@id/text_where"
         android:layout_marginLeft="5dp"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:text="Seoul Jongro"/>
 
     <TextView
         android:id="@+id/post_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@id/text_menu"
+        android:layout_width="140dp"
+        android:layout_height="20dp"
+        android:layout_alignBottom="@id/text_menu"
         android:layout_toRightOf="@id/text_menu"
         android:layout_marginLeft="5dp"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:text="Chicken &amp; Beer"/>
 
     <TextView
+        android:id="@+id/post_comments_num"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/text_menu"
         android:layout_alignLeft="@id/text_menu"
         android:layout_marginTop="5dp"
-        android:text="n Comments"/>
+        android:text="n "/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_menu"
+        android:layout_toRightOf="@id/post_comments_num"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:text="Comments"/>
 
     <ImageButton
         android:id="@+id/add_wish_button"

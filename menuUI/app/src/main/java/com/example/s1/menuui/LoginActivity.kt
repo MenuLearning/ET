@@ -43,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        skip.setOnClickListener {
+        login_skip_btn.setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }
@@ -89,11 +89,7 @@ class LoginActivity : AppCompatActivity() {
     // 로그인 성공 시 이동할 페이지
     fun moveMainPage(user: FirebaseUser?) {
         if (user != null) {
-            Toast.makeText(
-                this,
-                "Login 완료",
-                Toast.LENGTH_SHORT
-            ).show()
+            Toast.makeText(this, "Login 완료", Toast.LENGTH_SHORT).show()
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }

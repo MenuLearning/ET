@@ -3,39 +3,23 @@
     package="com.example.s1.menuui"
     android:targetSandboxVersion="2"
     android:versionCode="1"
-    android:versionName="1.0" >
-
+    android:versionName="1.0" > <!-- update -->
     <uses-sdk
-        android:minSdkVersion="22"
+        android:minSdkVersion="23"
         android:targetSdkVersion="28" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
-
-    <uses-feature android:name="android.hardware.camera2" />
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.camera.autofocus"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.camera.front"
-        android:required="false" />
-    <uses-feature
-        android:name="android.hardware.camera.front.autofocus"
-        android:required="false" />
-
-    <supports-screens
-        android:anyDensity="true"
-        android:largeScreens="true"
-        android:normalScreens="true"
-        android:resizeable="true"
-        android:smallScreens="true" />
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
     <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
     <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
@@ -49,15 +33,21 @@
         android:roundIcon="@mipmap/et_round"
         android:supportsRtl="true"
         android:testOnly="true"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true" >
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyC2uEnVlml1CL4xJbeqMpZKLxU8J2Sb7DY" />
+
         <activity android:name="com.example.s1.menuui.CommentActivity" />
-        <activity android:name="com.example.s1.menuui.Pic2TextActivity" />
-        <activity
-            android:name="com.example.s1.menuui.OpencvActivity"
-            android:configChanges="keyboardHidden|orientation" /> <!-- android:screenOrientation="landscape" -->
         <activity android:name="com.example.s1.menuui.AddPhotoActivity" />
         <activity android:name="com.example.s1.menuui.AddPostActivitiy" />
+        <activity android:name="com.example.s1.menuui.AddQnaActivity" />
+        <activity android:name="com.example.s1.menuui.LocationActivity" />
         <activity android:name="com.example.s1.menuui.LoginActivity" />
+        <activity android:name="com.example.s1.menuui.QnABoardActivity" />
+        <activity android:name="com.example.s1.menuui.TestActivity" />
+        <activity android:name="com.example.s1.menuui.TranslationActivity" />
         <activity
             android:name="com.example.s1.menuui.StartActivity"
             android:screenOrientation="fullSensor"
@@ -99,7 +89,11 @@
             android:label="Board"
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
-        <!-- android:theme="@style/AppTheme.NoActionBar" /> -->
+        <activity
+            android:name="com.example.s1.menuui.FreeBoardActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -219,7 +213,10 @@
         <service
             android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
             android:exported="true"
-            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" />
+            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION" /> <!-- Needs to be explicitly declared on P+ -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
 
         <receiver
             android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"

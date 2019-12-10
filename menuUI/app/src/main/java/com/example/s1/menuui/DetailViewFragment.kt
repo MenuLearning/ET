@@ -1,7 +1,10 @@
 package com.example.s1.menuui
 
+import android.app.AlertDialog
 import android.content.Intent
+import android.os.AsyncTask
 import android.os.Bundle
+import android.renderscript.ScriptGroup
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,11 +16,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
+import com.google.gson.JsonArray
+import com.google.gson.JsonParser
 import kotlinx.android.synthetic.main.fragment_detail.view.*
 import kotlinx.android.synthetic.main.fragment_user.view.*
+import kotlinx.android.synthetic.main.item_detail.*
 import kotlinx.android.synthetic.main.item_detail.view.*
+import org.json.JSONObject
+import java.io.*
+import java.lang.Exception
+import java.net.HttpURLConnection
+import java.net.URL
+import javax.net.ssl.HttpsURLConnection
 
 class DetailViewFragment : Fragment() {
 
@@ -44,18 +60,79 @@ class DetailViewFragment : Fragment() {
             fragmentManager?.beginTransaction()?.replace(R.id.main_content, qnaFragment)?.commit()
         }
 
+        view.test_btn.setOnClickListener {
+            /*
+            var str = "/image_download/"
+            var url  = "https://firebasestorage.googleapis.com/v0/b/menuui-a6191.appspot.com/o/freeboard%2FIMAGE_20191128_111853_.png?alt=media&token=0a3c6f7b-4312-4a10-8ebd-4486bffa2f81"
+            var arr = url.split("_")
+            str += arr[1] + "_" + arr[2] + "_.png"
+            str += url.split("=")[2]
+            Log.d(TAG, str)
+             */
+//            PostUrlTask().execute(url)
+            var db = FirebaseDatabase.getInstance().reference
+            var ref = db.child("data")
+            ref.child("jaZWAoZQn6yKbOERUtL2").orderByChild("korName").equalTo("가락국수").addListenerForSingleValueEvent(InfoValueEventListener())
+//            db?.child("jaZWAoZQn6yKbOERUtL2")?.equalTo("가락국수", "korName")?.addListenerForSingleValueEvent(InfoValueEventListener())
+        }
         return view
     }
+    private inner class InfoValueEventListener: ValueEventListener {
+        override fun onDataChange(p0: DataSnapshot) {
+            p0.children.forEach {
+                var ex = it.getValue(FoodInfoDTO::class.java)?.explanation
+                Log.d(TAG, ex)
+            }
+        }
+
+        override fun onCancelled(p0: DatabaseError) {
+            Log.d(TAG, "error : " + p0.toString())
+        }
+    }
+
+    private inner class PostUrlTask : AsyncTask<String, Void, String>() {
+        override fun doInBackground(vararg params: String?): String {
+            var url = URL("http://9cb82d98.ngrok.io")
+            var message = "success"
+            var con: HttpURLConnection = url.openConnection() as HttpURLConnection
+
+            try {
+                con.doOutput = true
+                con.requestMethod = "POST"
+
+                con.setChunkedStreamingMode(0)
+                con.setRequestProperty("Accept_Encoding", "UTF-8")
+
+                var dos = DataOutputStream(con.outputStream)
+                var out: OutputStream = BufferedOutputStream(con.outputStream)
+                dos.writeChars(params[0])
+                dos.flush()
+            }catch (e: Exception) {
+                message = "connection failed"
+                Log.d("TAG", "Connection Error : " + e.toString())
+            }finally {
+                con.disconnect()
+            }
+            return message
+        }
+
+        override fun onPostExecute(result: String?) {
+            super.onPostExecute(result)
+            AlertDialog.Builder(context)
+                .setTitle("Error")
+                .setMessage(result)
+                .setPositiveButton("ok", null).create().show()
+        }
+    }
+
     inner class DetailViewRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         var contentDTOs : ArrayList<ContentDTO> = arrayListOf()
         var contentUidList : ArrayList<String> = arrayListOf() // post id
-        var profileImgUrl : HashMap<String, String> = hashMapOf()
 
         init {
             firestore?.collection("images")?.orderBy("timestamp", Query.Direction.DESCENDING)?.addSnapshotListener { querySnapshot, firebaseFirestoreException ->
                 contentDTOs.clear()
                 contentUidList.clear()
-                profileImgUrl.clear()
 
                 //Sometimes, This code return null of querySnapshot when it signout
                 if(querySnapshot == null) return@addSnapshotListener
@@ -64,24 +141,8 @@ class DetailViewFragment : Fragment() {
                     var item = snapshot.toObject(ContentDTO::class.java)
                     contentDTOs.add(item!!)
                     contentUidList.add(snapshot.id)
-
-                    // add profile Image URl if it isn't exist
-                    if (!profileImgUrl.containsKey(item.uid)) {
-                        addProfileImgURL(item.uid!!)
-                    }
                 }
                 notifyDataSetChanged()
-            }
-        }
-
-        fun addProfileImgURL(id: String) {
-            firestore?.collection("profileImages")?.document(id)?.addSnapshotListener { documentSnapshot, firebaseFirestoreException ->
-                if(documentSnapshot == null) return@addSnapshotListener
-                if(documentSnapshot.data != null){
-                    var url = documentSnapshot?.data!!["image"].toString()
-//                    Log.d(TAG, "id : " + id + ", url : " + url)
-                    profileImgUrl.put(id, url)
-                }
             }
         }
 
@@ -103,7 +164,13 @@ class DetailViewFragment : Fragment() {
             viewholder.detailviewitem_profile_textview.text = contentDTOs!![p1].userId
 
             //User Profile Image
-            Glide.with(p0.itemView.context).load(profileImgUrl.get(contentDTOs!![p1].uid)).apply(RequestOptions().circleCrop()).into(viewholder.detailviewitem_profile_image)
+            firestore?.collection("profileImages")?.document(contentDTOs[p1].uid!!)?.addSnapshotListener { documentSnapshot, firebaseFirestoreException ->
+                if(documentSnapshot == null) return@addSnapshotListener
+                if(documentSnapshot.data != null){
+                    var url = documentSnapshot?.data!!["image"]
+                    Glide.with(context!!).load(url).apply(RequestOptions().circleCrop()).into(viewholder.detailviewitem_profile_image)
+                }
+            }
 
             //Image
             Glide.with(p0.itemView.context).load(contentDTOs!![p1].imageUrl).into(viewholder.detailviewitem_imageview_content)
@@ -140,14 +207,27 @@ class DetailViewFragment : Fragment() {
             }
             // move to commentActivity
             viewholder.detailviewitem_comment_imageview.setOnClickListener { v ->
-                var intent = Intent(v.context,CommentActivity::class.java)
+                var intent = Intent(v.context, CommentActivity::class.java)
                 intent.putExtra("contentUid",contentUidList[p1])
                 intent.putExtra("destinationUid",contentDTOs[p1].uid)
                 intent.putExtra("content", contentDTOs[p1].explain)
                 intent.putExtra("contentUserId", contentDTOs[p1].userId)
-                intent.putExtra("contentProfileUrl", profileImgUrl.get(contentDTOs[p1].uid))
+//                intent.putExtra("contentProfileUrl", profileImgUrl.get(contentDTOs[p1].uid))
+                intent.putExtra("collection", "images")
                 startActivity(intent)
             }
+        }
+
+        fun getProfileImgUrl(position: Int) {
+            /*
+            firestore?.collection("profileImages")?.document(contentDTOs[position].uid!!)?.addSnapshotListener { documentSnapshot, firebaseFirestoreException ->
+                if(documentSnapshot == null) return@addSnapshotListener
+                if(documentSnapshot.data != null){
+                    var url = documentSnapshot?.data!!["image"]
+                    Glide.with(this).load(url).apply(RequestOptions().circleCrop()).into(detailviewitem_profile_image)
+                }
+            }
+             */
         }
 
         fun favoriteEvent(position : Int){

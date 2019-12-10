@@ -1,13 +1,10 @@
-#Tue Nov 19 13:25:23 KST 2019
-path.3=classes_0.dex
+#Mon Dec 09 16:36:33 KST 2019
 path.2=classes2.dex
 path.1=classes.dex
 path.0=classes.dex
-renamed.3=classes4.dex
 renamed.2=classes3.dex
 renamed.1=classes2.dex
 renamed.0=classes.dex
-base.3=C\:\\Users\\CS402A\\ET-master\\menuUI\\app\\build\\intermediates\\dex\\debug\\mergeLibDexDebug\\out\\classes_0.dex
-base.2=C\:\\Users\\CS402A\\ET-master\\menuUI\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes2.dex
-base.1=C\:\\Users\\CS402A\\ET-master\\menuUI\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
-base.0=C\:\\Users\\CS402A\\ET-master\\menuUI\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
+base.2=C\:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes2.dex
+base.1=C\:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
+base.0=C\:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex

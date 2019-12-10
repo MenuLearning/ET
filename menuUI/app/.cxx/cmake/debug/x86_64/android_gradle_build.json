@@ -1,38 +1,38 @@
 {
   "stringTable": {
-    "0": "C:/Users/CS402A/ET-master/menuUI/app/.cxx/cmake/debug/x86_64",
-    "1": "--target=x86_64-none-linux-android22 --gcc-toolchain=C:/Users/CS402A/AppData/Local/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/CS402A/AppData/Local/Android/Sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dnative_lib_EXPORTS -IC:/Users/CS402A/ET-master/menuUI/opencv/native/jni/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -std=gnu++11 -O0 -fno-limit-debug-info -fPIC"
+    "0": "C:/Users/kkuy6/AndroidStudioProjects/menuUI/app/.cxx/cmake/debug/x86_64",
+    "1": "--target=x86_64-none-linux-android23 --gcc-toolchain=C:/Users/kkuy6/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64 --sysroot=C:/Users/kkuy6/AppData/Local/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dnative_lib_EXPORTS -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -O0 -fno-limit-debug-info -fPIC"
   },
   "buildFiles": [
-    "C:\\Users\\CS402A\\AppData\\Local\\Android\\Sdk\\ndk\\20.0.5594570\\build\\cmake\\android.toolchain.cmake",
-    "C:\\Users\\CS402A\\AppData\\Local\\Android\\Sdk\\ndk\\20.0.5594570\\build\\cmake\\platforms.cmake",
-    "C:\\Users\\CS402A\\ET-master\\menuUI\\app\\src\\main\\cpp\\CMakeLists.txt"
+    "C:\\Users\\kkuy6\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\build\\cmake\\platforms.cmake",
+    "C:\\Users\\kkuy6\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\build\\cmake\\android.toolchain.cmake",
+    "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\src\\main\\cpp\\CMakeLists.txt"
   ],
   "cleanCommands": [
-    "C:\\Users\\CS402A\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CS402A\\ET-master\\menuUI\\app\\.cxx\\cmake\\debug\\x86_64\" clean"
+    "C:\\Users\\kkuy6\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\debug\\x86_64\" clean"
   ],
-  "buildTargetsCommand": "C:\\Users\\CS402A\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CS402A\\ET-master\\menuUI\\app\\.cxx\\cmake\\debug\\x86_64\" {LIST_OF_TARGETS_TO_BUILD}",
+  "buildTargetsCommand": "C:\\Users\\kkuy6\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\debug\\x86_64\" {LIST_OF_TARGETS_TO_BUILD}",
   "libraries": {
     "native-lib-Debug-x86_64": {
-      "buildCommand": "C:\\Users\\CS402A\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\CS402A\\ET-master\\menuUI\\app\\.cxx\\cmake\\debug\\x86_64\" native-lib",
+      "buildCommand": "C:\\Users\\kkuy6\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\\bin\\ninja.exe -C \"C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\debug\\x86_64\" native-lib",
       "buildType": "debug",
-      "toolchain": "289270004",
+      "toolchain": "3586645195",
       "abi": "x86_64",
       "artifactName": "native-lib",
       "files": [
         {
-          "src": "C:\\Users\\CS402A\\ET-master\\menuUI\\app\\src\\main\\cpp\\native-lib.cpp",
+          "src": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\src\\main\\cpp\\native-lib.cpp",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0
         }
       ],
       "headers": [],
-      "output": "C:\\Users\\CS402A\\ET-master\\menuUI\\app\\build\\intermediates\\cmake\\debug\\obj\\x86_64\\libnative-lib.so"
+      "output": "C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\build\\intermediates\\cmake\\debug\\obj\\x86_64\\libnative-lib.so"
     }
   },
   "toolchains": {
-    "289270004": {
-      "cppCompilerExecutable": "C:\\Users\\CS402A\\AppData\\Local\\Android\\Sdk\\ndk\\20.0.5594570\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+    "3586645195": {
+      "cppCompilerExecutable": "C:\\Users\\kkuy6\\AppData\\Local\\Android\\Sdk\\ndk-bundle\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
     }
   },
   "cFileExtensions": [],

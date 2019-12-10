@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -13,6 +14,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
+import androidx.core.view.isVisible
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.findNavController
 import androidx.navigation.ui.navigateUp
@@ -30,29 +32,46 @@ import com.google.firebase.storage.UploadTask
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import com.google.android.gms.tasks.Task
+import kotlinx.android.synthetic.main.activity_login.view.*
+import kotlinx.android.synthetic.main.app_bar_main.view.*
 import kotlinx.android.synthetic.main.content_main.*
 
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private var auth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.app_bar_main)
         ActivityCompat.requestPermissions(this,arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),1)
         // Example of a call to a native method
         bottom_navigation.setOnNavigationItemSelectedListener(this)
         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),1)
+//        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+//        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), 1)
 
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+        auth = FirebaseAuth.getInstance()
 
         //Set default screen
-        bottom_navigation.selectedItemId = R.id.action_home
-        registerPushToken()
+        if (auth?.currentUser == null) {
+            var SearchFragment = SearchFragment()
+            bottom_navigation.isVisible = false
+            supportFragmentManager.beginTransaction().replace(R.id.main_content,SearchFragment).commit()
+            Log.d("Login", "currentUser is null")
+//            toolbar.menu.findItem(0).isVisible = true
+        }
+        else {
+            bottom_navigation.isVisible = true
+            bottom_navigation.selectedItemId = R.id.action_home
+            registerPushToken()
+        }
 
-        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
-        val navView: NavigationView = findViewById(R.id.nav_view)
+//        val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
+//        val navView: NavigationView = findViewById(R.id.nav_view)
+        /*
         val navController = findNavController(R.id.nav_host_fragment)
 
         appBarConfiguration = AppBarConfiguration(
@@ -62,7 +81,8 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        */
+//        navView.setupWithNavController(navController)
     }
 
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
@@ -83,9 +103,11 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 }
                 return true
             }
-            R.id.action_favorite_alarm ->{
-                var alarmFragment = AlarmFragment()
-                supportFragmentManager.beginTransaction().replace(R.id.main_content,alarmFragment).commit()
+            R.id.action_favorite_alarm -> {
+                var wishMenuFragment = WishMenuFragment()
+                supportFragmentManager.beginTransaction().replace(R.id.main_content,wishMenuFragment).commit()
+//                var alarmFragment = AlarmFragment()
+//                supportFragmentManager.beginTransaction().replace(R.id.main_content,alarmFragment).commit()
                 return true
             }
             R.id.action_account -> {
@@ -135,9 +157,23 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+
+        if (auth?.currentUser != null) {
+            menu.findItem(R.id.action_login).isVisible = false
+        }
         return true
     }
 
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.action_login -> {
+                var intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
+                finish()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()

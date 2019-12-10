@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/freeboard_new_iv"
             android:layout_marginTop="20dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="20dp"
             android:text="What?"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/freeboard_food_menu_tv"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
             android:text="Where?"
             android:textSize="20dp"
@@ -78,19 +78,20 @@
 
         <EditText
             android:id="@+id/freeboard_restaurant_edit_tv"
-            android:layout_width="200dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignTop="@id/freeboard_restaurant_tv"
             android:layout_toRightOf="@id/freeboard_restaurant_tv"
+            android:layout_marginRight="5dp"
             android:layout_centerHorizontal="true"/>
 
         <Button
             android:id="@+id/freeboard_location_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/freeboard_restaurant_tv"
+            android:layout_below="@id/freeboard_restaurant_edit_tv"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:backgroundTint="@color/colorPrimary"
             android:textColor="@color/colorWhite"
             android:text="Find Location"

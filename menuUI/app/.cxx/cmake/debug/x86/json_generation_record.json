@@ -1,7 +1,7 @@
 [
   {
     "level": "INFO",
-    "message": "Start JSON generation. Platform version: 22 min SDK version: x86"
+    "message": "Start JSON generation. Platform version: 23 min SDK version: x86"
   },
   {
     "level": "INFO",
@@ -9,15 +9,11 @@
   },
   {
     "level": "INFO",
-    "message": "- CMake found in SDK at \u0027C:\\Users\\CS402A\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\u0027 had version \u00273.10.2\u0027"
+    "message": "- CMake found in SDK at \u0027C:\\Users\\kkuy6\\AppData\\Local\\Android\\Sdk\\cmake\\3.10.2.4988404\u0027 had version \u00273.10.2\u0027"
   },
   {
     "level": "INFO",
-    "message": "CMake \u00273.6.0\u0027 found in SDK did not match requested version \u00273.10.2\u0027."
-  },
-  {
-    "level": "INFO",
-    "message": "JSON \u0027C:\\Users\\CS402A\\ET-master\\menuUI\\app\\.cxx\\cmake\\debug\\x86\\android_gradle_build.json\u0027 was up-to-date"
+    "message": "JSON \u0027C:\\Users\\kkuy6\\AndroidStudioProjects\\menuUI\\app\\.cxx\\cmake\\debug\\x86\\android_gradle_build.json\u0027 was up-to-date"
   },
   {
     "level": "INFO",
