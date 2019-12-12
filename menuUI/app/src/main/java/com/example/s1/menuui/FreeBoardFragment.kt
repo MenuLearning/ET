@@ -17,6 +17,7 @@ import com.example.s1.menuui.ui.freeboard.FreeBoardViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import kotlinx.android.synthetic.main.fragment_freeboard.*
 import kotlinx.android.synthetic.main.fragment_freeboard.view.*
 import kotlinx.android.synthetic.main.post_list_item.view.*
@@ -55,7 +56,7 @@ class FreeBoardFragment : Fragment() {
             val intent = Intent(context, AddPostActivitiy::class.java)
             startActivityForResult(intent, UPLOAD_NEW_POST)
         }
-
+        /*
         root.freeboard_search_btn.setOnClickListener {
             if (freeboard_search_edit_tv.text == null) {
                 AlertDialog.Builder(context)
@@ -68,7 +69,7 @@ class FreeBoardFragment : Fragment() {
                 searchContents(keyword)
             }
         }
-
+         */
         return root
     }
 
@@ -93,7 +94,7 @@ class FreeBoardFragment : Fragment() {
         var snapshotIds : ArrayList<String> = arrayListOf()
 
         init {
-            firestore?.collection("freeboard")?.orderBy("timestamp")?.addSnapshotListener { querySnapshot, exception ->
+            firestore?.collection("freeboard")?.orderBy("timestamp", Query.Direction.DESCENDING)?.addSnapshotListener { querySnapshot, exception ->
                 freeboardDTOs.clear()
                 snapshotIds.clear()
 

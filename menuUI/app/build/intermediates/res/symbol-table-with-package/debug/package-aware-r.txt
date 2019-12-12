@@ -1313,6 +1313,9 @@ drawable ic_account
 drawable ic_add_32
 drawable ic_add_a_photo
 drawable ic_arrow_back
+drawable ic_arrow_down_20
+drawable ic_arrow_down_24
+drawable ic_arrow_up_24
 drawable ic_chat_black
 drawable ic_favorite
 drawable ic_favorite_border
@@ -1639,8 +1642,11 @@ id inline
 id invisible
 id invisible_frame
 id italic
+id item_line
 id item_touch_helper_previous_elevation
+id item_translation_explanation_tv
 id item_translation_korean_tv
+id item_translation_more_info_btn
 id item_translation_price_tv
 id item_translation_result_tv
 id labeled
@@ -1794,7 +1800,6 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id terrain
-id test_btn
 id text
 id text2
 id textSpacerNoButtons

@@ -41,8 +41,8 @@ class SearchFragment : Fragment() {
     private val IMAGE_CAPTURE_CODE = 1001
     private val PICK_IMAGE_FROM_ALBUM_CODE = 1002
     var image_uri: Uri? = null
-    var country: String? = "EUR"
-    var country2: String? = "KRW"
+    var country: String? = "KRW"
+    var country2: String? = "EUR"
     private var storage: FirebaseStorage? = null
 
     override fun onCreateView(
@@ -73,8 +73,8 @@ class SearchFragment : Fragment() {
             // Apply the adapter to the spinner
             spinner!!.adapter = adapter
             spinner2!!.adapter = adapter
-            spinner.setSelection(3)
-            spinner2.setSelection(8)
+            spinner.setSelection(0)
+            spinner2.setSelection(4)
         }
         spinner!!.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
             override fun onItemSelected(
@@ -249,7 +249,7 @@ class SearchFragment : Fragment() {
                     }?.addOnSuccessListener { uri ->
                         Log.d(TAG, "success" + uri.toString())
                         var url = uri.toString()
-                        var str = "http://d9809da3.ngrok.io/image_download/"
+                        var str = "http://497914d4.ngrok.io/image_download/"
                         var arr = url.split("_")
                         str += arr[1] + "_" + arr[2] + "_.png"
                         str += url.split("=")[2]
@@ -261,7 +261,6 @@ class SearchFragment : Fragment() {
                     }?.addOnFailureListener {
                         Log.d(TAG, "failure")
                     }
-
             }
         }
         else if (requestCode == PICK_IMAGE_FROM_ALBUM_CODE && resultCode == Activity.RESULT_OK) {
@@ -293,7 +292,7 @@ class SearchFragment : Fragment() {
     }
 
     private fun formatUriToServerAddress(uri_str: String): String{
-        var str = "http://d9809da3.ngrok.io/image_download/"
+        var str = "http://497914d4.ngrok.io/image_download/"
         var arr = uri_str.split("_")
         str += arr[1] + "_" + arr[2] + "_.png"
         str += uri_str.split("=")[2]
@@ -349,7 +348,11 @@ class SearchFragment : Fragment() {
 
                 for (result in resultArray) {
                     val tmp = result.asJsonArray
-                    var str = tmp[0].toString() + "," + tmp[2].toString() + "," + tmp[1].toString()
+                    Log.d(TAG, "explanation : ${tmp[3]}")
+                    if (tmp[3].toString() == "" && tmp[3].toString() == " ") {
+                        Log.d(TAG, "${tmp[0]} is null")
+                    }
+                    var str = tmp[0].toString() + "," + tmp[2].toString() + "," + tmp[1].toString() + "," + tmp[3].toString()
                     str = str.replace("\"", "")
                     Log.d(TAG, str)
                     stringResult.add(str)
@@ -370,10 +373,12 @@ class SearchFragment : Fragment() {
 
         override fun onPostExecute(result: String?) {
             super.onPostExecute(result)
+            /*
             AlertDialog.Builder(context)
                 .setTitle("Error")
                 .setMessage(result)
                 .setPositiveButton("ok", null).create().show()
+             */
 
             if (stringResult != null) {
                 var intent = Intent(context, TranslationActivity::class.java)

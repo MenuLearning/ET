@@ -59,22 +59,6 @@ class DetailViewFragment : Fragment() {
             val qnaFragment = QNAFragment()
             fragmentManager?.beginTransaction()?.replace(R.id.main_content, qnaFragment)?.commit()
         }
-
-        view.test_btn.setOnClickListener {
-            /*
-            var str = "/image_download/"
-            var url  = "https://firebasestorage.googleapis.com/v0/b/menuui-a6191.appspot.com/o/freeboard%2FIMAGE_20191128_111853_.png?alt=media&token=0a3c6f7b-4312-4a10-8ebd-4486bffa2f81"
-            var arr = url.split("_")
-            str += arr[1] + "_" + arr[2] + "_.png"
-            str += url.split("=")[2]
-            Log.d(TAG, str)
-             */
-//            PostUrlTask().execute(url)
-            var db = FirebaseDatabase.getInstance().reference
-            var ref = db.child("data")
-            ref.child("jaZWAoZQn6yKbOERUtL2").orderByChild("korName").equalTo("가락국수").addListenerForSingleValueEvent(InfoValueEventListener())
-//            db?.child("jaZWAoZQn6yKbOERUtL2")?.equalTo("가락국수", "korName")?.addListenerForSingleValueEvent(InfoValueEventListener())
-        }
         return view
     }
     private inner class InfoValueEventListener: ValueEventListener {

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="my_array">
+        <item>Korea KRW</item>
         <item>Australia AUD </item>
         <item>Canada CAD </item>
         <item>China CNY </item>
